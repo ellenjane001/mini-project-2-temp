@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap');
+
+
+/* font-family: 'Bebas Neue', cursive;
+font-family: 'Montserrat', sans-serif; */
+
+html body main nav>div>div>ul>li {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 28px;
+}
+
+html body main p.source {
+    font-size: 13px;
+}
+
+html body main p.source a {
+    color: #fff;
+    text-decoration: none;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+html body main p.source a:hover {
+    text-decoration: underline;
+}
