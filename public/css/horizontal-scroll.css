@@ -1,0 +1,16 @@
+.card-group-products > .row {
+    display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  }
+  .card-group-products > .row > .col-2 {
+    display: inline-block;
+  }
+.brand-group > .row {
+    display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  }
+ .brand-group > .row > .col-3 {
+    display: inline-block;
+  }
