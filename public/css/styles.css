@@ -4,6 +4,9 @@
 /* font-family: 'Bebas Neue', cursive;
 font-family: 'Montserrat', sans-serif; */
 
+html body main {
+    font-family: 'Montserrat', sans-serif;
+}
 html body main nav>div>div>ul>li {
     font-family: 'Bebas Neue', cursive;
     font-size: 28px;

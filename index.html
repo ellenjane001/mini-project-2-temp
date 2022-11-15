@@ -23,6 +23,7 @@
 
 <body>
     <main class="container-fluid">
+        <!-- navigation -->
         <nav class="navbar navbar-expand-lg px-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./index.html"><img
@@ -54,6 +55,7 @@
                 </div>
             </div>
         </nav>
+        <!-- contacts bar -->
         <div class="container-fluid px-4 py-2 border border-light d-flex justify-content-between align-items-center">
             <div class="left-wrapper d-flex gap-3">
                 <!-- facebook -->
@@ -69,72 +71,189 @@
         </div>
         <!-- template stops here -->
         <!-- carousel -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
+                    aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    class="active" aria-current="true"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    class=""></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item active carousel-item-start">
+                    <!-- geforce -->
                     <img src="https://images.unsplash.com/photo-1607380823620-30b72b291c2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p class="source">Photo by <a
-                                href="https://unsplash.com/@pattyzc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Patricia
-                                Zavala</a> on <a
-                                href="https://unsplash.com/collections/LUUiD3wsE-g/project-five?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-                        </p>
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Example headline.</h1>
+                            <p>Some representative placeholder content for the first slide of the carousel.</p>
+                            <p class="source text-wrap text-white-50">Photo by <a
+                                    href="https://unsplash.com/@pattyzc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Patricia
+                                    Zavala</a> on <a
+                                    href="https://unsplash.com/collections/LUUiD3wsE-g/project-five?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                            </p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                        </div>
                     </div>
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item carousel-item-next carousel-item-start">
+                    <!-- ryzen -->
                     <img src="https://images.unsplash.com/photo-1629725413198-8cbebe94f3a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p class="source">Photo by <a
-                                href="https://unsplash.com/@benjaminlehman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">benjamin
-                                lehman</a> on <a
-                                href="https://unsplash.com/photos/0uXzoEzYZ4I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-                        </p>
+
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Another example headline.</h1>
+                            <p>Some representative placeholder content for the second slide of the carousel.</p>
+                            <p class="source text-wrap">Photo by <a
+                                    href="https://unsplash.com/@benjaminlehman?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">benjamin
+                                    lehman</a> on <a
+                                    href="https://unsplash.com/photos/0uXzoEzYZ4I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                            </p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                        </div>
                     </div>
                 </div>
                 <div class="carousel-item">
+                    <!-- rog -->
                     <img src="https://images.unsplash.com/photo-1587202372616-b43abea06c2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80    "
                         class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p class="source">Photo by <a
-                                href="https://unsplash.com/@christianw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Christian
-                                Wiediger</a> on <a
-                                href="https://unsplash.com/photos/1uBCLmu5BqA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-                        </p>
+
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>One more for good measure.</h1>
+                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                            <p class="source text-wrap">Photo by <a
+                                    href="https://unsplash.com/@christianw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Christian
+                                    Wiediger</a> on <a
+                                    href="https://unsplash.com/photos/1uBCLmu5BqA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                            </p>
+                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+
         <!-- carousel end -->
         <div class="container text-center brand-group py-2">
             <h1>Brands</h1>
             <div class="row">
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
-                <div class="col-3">test</div>
+                <div class="col-3">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
+                        style="background-image: url('https://images.unsplash.com/photo-1606963060045-1e3eaa0e6eac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <div class="h-100 d-flex justify-content-between align-items-end">
+                                <p class="source text-wrap">
+                                    Photo by <a
+                                        href="https://unsplash.com/@timothycdykes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Timothy
+                                        Dykes</a> on <a
+                                        href="https://unsplash.com/s/photos/ryzen-logo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
+                        style="background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <div class="h-100 d-flex justify-content-between align-items-end">
+                                <p class="source text-wrap">
+                                    Photo by <a
+                                        href="https://unsplash.com/@martenbjork?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marten
+                                        Bjork</a> on <a
+                                        href="https://unsplash.com/s/photos/hotel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
+                        style="background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <div class="h-100 d-flex justify-content-between align-items-end">
+                                <p class="source text-wrap">
+                                    Photo by <a
+                                        href="https://unsplash.com/@martenbjork?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marten
+                                        Bjork</a> on <a
+                                        href="https://unsplash.com/s/photos/hotel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
+                        style="background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <div class="h-100 d-flex justify-content-between align-items-end">
+                                <p class="source text-wrap">
+                                    Photo by <a
+                                        href="https://unsplash.com/@martenbjork?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marten
+                                        Bjork</a> on <a
+                                        href="https://unsplash.com/s/photos/hotel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
+                        style="background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <div class="h-100 d-flex justify-content-between align-items-end">
+                                <p class="source text-wrap">
+                                    Photo by <a
+                                        href="https://unsplash.com/@martenbjork?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marten
+                                        Bjork</a> on <a
+                                        href="https://unsplash.com/s/photos/hotel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
+                        style="background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <div class="h-100 d-flex justify-content-between align-items-end">
+                                <p class="source text-wrap">
+                                    Photo by <a
+                                        href="https://unsplash.com/@martenbjork?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marten
+                                        Bjork</a> on <a
+                                        href="https://unsplash.com/s/photos/hotel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
+                        style="background-image: url('https://images.unsplash.com/photo-1517840901100-8179e982acb7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <div class="h-100 d-flex justify-content-between align-items-end">
+                                <p class="source text-wrap">
+                                    Photo by <a
+                                        href="https://unsplash.com/@martenbjork?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marten
+                                        Bjork</a> on <a
+                                        href="https://unsplash.com/s/photos/hotel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="container text-center card-group-products py-2">
