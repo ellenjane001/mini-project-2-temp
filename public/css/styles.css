@@ -17,6 +17,7 @@ html body main nav>div>div>ul>li {
     font-size: 28px;
 }
 
+
 html body main p.source {
     font-size: 13px;
 }
@@ -36,7 +37,12 @@ html body main p.source a:hover {
     div.carousel-caption>p.text-primary.display-6 {
         font-size: calc(0.375rem + 1.5vw);
     }
+
     html body main p.source {
         font-size: 9px;
+    }
+
+    html body main nav.navbar>div>a.navbar-brand>img {
+       height: 65px;
     }
 }

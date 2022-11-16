@@ -1,10 +1,12 @@
    /* Carousel 1/2 of screen */
 
-   .carousel-item.active, .carousel-item .view {
+   .carousel-item.active,
+   .carousel-item .view {
        height: 50vh !important;
    }
 
-   .carousel-item.active, .carousel-item {
+   .carousel-item.active,
+   .carousel-item {
        height: 50vh !important;
    }
 
@@ -12,6 +14,8 @@
        object-fit: cover;
        width: 100% !important;
        height: 100% !important;
+       filter: blur(3px);
+       -webkit-filter: blur(3px);
    }
 
    .content h1 {
@@ -30,11 +34,13 @@
    @media only screen and (max-width: 600px) {
        /* Carousel 1/2 of screen */
 
-       .carousel-item.active, .carousel-item .view {
+       .carousel-item.active,
+       .carousel-item .view {
            height: 30vh !important;
        }
 
-       .carousel-item.active, .carousel-item {
+       .carousel-item.active,
+       .carousel-item {
            height: 30vh !important;
        }
 
@@ -49,11 +55,13 @@
    @media only screen and (min-width: 600px) {
        /* Carousel 1/2 of screen */
 
-       .carousel-item.active, .carousel-item .view {
+       .carousel-item.active,
+       .carousel-item .view {
            height: 30vh !important;
        }
 
-       .carousel-item.active, .carousel-item {
+       .carousel-item.active,
+       .carousel-item {
            height: 30vh !important;
        }
 
@@ -69,11 +77,13 @@
    @media only screen and (min-width: 768px) {
        /* Carousel 1/2 of screen */
 
-       .carousel-item.active, .carousel-item .view {
+       .carousel-item.active,
+       .carousel-item .view {
            height: 30vh !important;
        }
 
-       .carousel-item.active, .carousel-item {
+       .carousel-item.active,
+       .carousel-item {
            height: 30vh !important;
        }
 
@@ -88,11 +98,13 @@
    @media only screen and (min-width: 992px) {
        /* Carousel 1/2 of screen */
 
-       .carousel-item.active, .carousel-item .view {
+       .carousel-item.active,
+       .carousel-item .view {
            height: 50vh !important;
        }
 
-       .carousel-item.active, .carousel-item {
+       .carousel-item.active,
+       .carousel-item {
            height: 50vh !important;
        }
 
@@ -108,11 +120,13 @@
    @media only screen and (min-width: 1200px) {
        /* Carousel 1/2 of screen */
 
-       .carousel-item.active, .carousel-item .view {
+       .carousel-item.active,
+       .carousel-item .view {
            height: 50vh !important;
        }
 
-       .carousel-item.active, .carousel-item {
+       .carousel-item.active,
+       .carousel-item {
            height: 50vh !important;
        }
 
