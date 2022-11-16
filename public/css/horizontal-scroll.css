@@ -19,8 +19,9 @@
     white-space: nowrap;
 }
 
-.brand-group>.row>.col-3 {
+.brand-group>.row>div.col-3 {
     display: inline-block;
+    width: fit-content;
 }
 
 .brand-group>.row>.col-3>.card {
@@ -28,6 +29,42 @@
     height: 300px !important;
     background-size: cover;
     background-position-x: 50%;
+}
+
+@media (max-width:600px) {
+    .brand-group>.row>.col-3 {
+        width: 100%;
+    }
+}
+
+@media (max-width:300px) {
+    div.brand-group>div.row div.col-3 {
+        width: 100%;
+    }
+}
+
+@media (max-width:700px) {
+    .brand-group>.row .col-3 {
+        width: 100%;
+    }
+}
+
+@media (max-width:1076px) {
+    .brand-group>.row .col-3 {
+        width: 40%;
+    }
+}
+
+@media (max-width:1300px) {
+    div.brand-group>.col-3 {
+        width: 35%;
+    }
+}
+
+@media (max-width:1000px) {
+    .brand-group .col-3 {
+        width: 40%;
+    }
 }
 
 ::-webkit-scrollbar-track {

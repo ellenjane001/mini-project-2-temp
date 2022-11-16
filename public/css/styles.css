@@ -7,6 +7,11 @@ font-family: 'Montserrat', sans-serif; */
 html body main {
     font-family: 'Montserrat', sans-serif;
 }
+
+html body main h1 {
+    font-family: 'Bebas Neue', cursive;
+}
+
 html body main nav>div>div>ul>li {
     font-family: 'Bebas Neue', cursive;
     font-size: 28px;
@@ -27,3 +32,11 @@ html body main p.source a:hover {
     text-decoration: underline;
 }
 
+@media (max-width:375px) {
+    div.carousel-caption>p.text-primary.display-6 {
+        font-size: calc(0.375rem + 1.5vw);
+    }
+    html body main p.source {
+        font-size: 9px;
+    }
+}
