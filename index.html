@@ -13,6 +13,9 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./public/css/swiper.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" defer></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"
@@ -20,6 +23,7 @@
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/b140af86b3.js" crossorigin="anonymous" defer></script>
     <script src="./public/js/index.js" defer></script>
+    <script src="./public/js/swiper.js" defer></script>
 </head>
 
 <body>
@@ -50,7 +54,7 @@
                             <a class="nav-link" href="#">Just Arrived</a>
                         </li>
                     </ul>
-                    <a href="#" class="mx-3">
+                    <a title="shopping-cart" href="#" class="mx-3">
                         <i class="fa-solid fa-cart-shopping fa-xl"></i>
                     </a>
                 </div>
@@ -60,7 +64,7 @@
         <div class="container-fluid px-4 py-2 border border-light d-flex justify-content-between align-items-center">
             <div class="left-wrapper d-flex gap-3">
                 <!-- facebook -->
-                <a href="#" class="fb"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
+                <a title="facebook" href="#" class="fb"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
                 <span>Questions? Call: 123-4567 / 891-0111</span>
             </div>
             <div class="right-wrapper btn-group">
@@ -89,14 +93,14 @@
                     <div class="container">
                         <div class="carousel-caption text-end">
                             <h1 class="display-1">FREE SHIPPING</h1>
-                            <p class="h4">Enjoy massive savings on your first purchase</p>
+                            <p class="h4 text-primary">Enjoy massive savings on your first purchase</p>
                             <p class="source text-wrap text-white-50">
                                 Photo by <a
                                     href="https://unsplash.com/@elladon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ELLA
                                     DON</a> on <a
                                     href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
                             </p>
-                            <p><a class="btn btn-lg btn-primary" href="#">GET MY DISCOUNT</a></p>
+                            <p><a class="btn btn-lg btn-light" href="#">GET MY DISCOUNT</a></p>
                         </div>
                     </div>
                 </div>
@@ -104,18 +108,16 @@
                     <!-- ryzen -->
                     <img src="https://images.unsplash.com/photo-1629725413198-8cbebe94f3a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                         class="d-block w-100" alt="...">
-
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1 class="display-1">High Quality</h1>
+                            <h1 class="display-1 text-primary">High Quality</h1>
                             <p class="h5">Cutting edge technology within your budget</p>
                             <p class="source text-wrap">Photo by <a
                                     href="https://unsplash.com/@techmatched?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Abdullah
                                     Abid</a> on <a
                                     href="https://unsplash.com/s/photos/pc-gaming?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-
                             </p>
-                            <p><a class="btn btn-lg btn-primary" href="#">SHOP NOW</a></p>
+                            <p><a class="btn btn-lg btn-light" href="#">SHOP NOW</a></p>
                         </div>
                     </div>
                 </div>
@@ -123,7 +125,6 @@
                     <!-- rog -->
                     <img src="https://images.unsplash.com/photo-1658673640381-82912c827a68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                         class="d-block w-100" alt="...">
-
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h1 class="display-1">Cost Effective</h1>
@@ -133,8 +134,7 @@
                                     lehman</a> on <a
                                     href="https://unsplash.com/photos/0uXzoEzYZ4I?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
                             </p>
-                            <p><a class="btn btn-lg btn-primary" href="#">BUY NOW</a></p>
-
+                            <p><a class="btn btn-lg btn-light" href="#">BUY NOW</a></p>
                         </div>
                     </div>
                 </div>
@@ -149,188 +149,200 @@
             </button>
         </div>
         <!-- carousel end -->
-        <div class="container text-center brand-group py-3">
-            <h1>Leading Brands</h1>
-            <div class="row">
-                <!-- AMD -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://lh3.googleusercontent.com/V1G8Jm59O9nfP_bmGhgf6MROLJzzToacC7BEuCrEfRYXOpq_FsWWTsyV2yfknrMef7R9vH7168fI3uenNJC_9EVB9oTHBiHbliP420R0Tu8h-gA9QIXjIHbCBpbkCciCZx3pI07XRg=w2400');">
-                    </div>
-                </div>
-                <!-- Intel -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://logodownload.org/wp-content/uploads/2014/04/intel-logo-1-1.png');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                        </div>
-                    </div>
-                </div>
-                <!-- tuf -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://lh3.googleusercontent.com/pkQ9NxwGzRaThigIRkd_0phjt50YiVJcqNzC4rhlWw_BtL4dtJcTeURXyth0bINZrX8t58lXjW2h3oMbfQfznXz3OYPWMrlpJRvt65MLss0O_oXtTC5g8RWQ1yz-18GAE4Y5a9MPPw=w2400');">
-                    </div>
-                </div>
-                <!-- msi -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://lh3.googleusercontent.com/XbqxfUrBnHF2ca8aG-BAinQ4KLgRaY1hnbYC4cu9nswxqXxBsLUimFiMhhwa9FCoNL9UYq0bCGYgfvbAzdUdSuYd5Bwxcpg6kQQbky9Mw6kfd4YRCNuJHwVoSraAnAq9dMtmoIsP9A=w2400');">
-                    </div>
-                </div>
-                <!-- nvidia -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d.png');">
-                    </div>
-                </div>
-                <!-- gigabyte -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://lh3.googleusercontent.com/EKxRyINVD13bU3oe146VOPWcj93t5RQf9uFZhV0VwW_wpE2YKfr43pa9Wic1oZGLjNum0OHuHsJ2U97AHWT0bHH19zM_Dl3Md9ppkn4XOhOLmzWiccBDvf_SJAiHj_RTvxx-7bRigQ=w2400');">
-
-                    </div>
-                </div>
-                <!-- rog -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://lh3.googleusercontent.com/VOEiIDPcbXnGArKc5bOH68yfRoeTsknUt_Ga5BO0hOeAq55WE1NWNBaba3WJ0gf6SD9_dLxpMEYikGcbmCgcAjIoj3IcDj8oesc4p3h7FA3hDuoey3V2v7rm1oecZwv6Dgz5U3wlLA=w2400');">
-
-                    </div>
-                </div>
-                <!-- toshiba -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://lh3.googleusercontent.com/nzPxXokTw8IddVjQHfT0jIXeG10l11MQmhRnzHRuyZvvxj6ucwsc3PvnZndGhSu0PiHDQjRgzh4iZfKaVXNznRbq44UycomRd1SUfgYGTxQ2rCVH9zkDvg4evMTBz32oi9gjkCE5ag=w2400');">
-
-                    </div>
-                </div>
-                <!-- razer -->
-                <div class="col-4">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg"
-                        style="background-image: url('https://lh3.googleusercontent.com/OAVmLpnKYIxQ6wMEfbmdTZM_ksQ6Qx_r26bmsyS0Scq1eagpXbngatCqQpgialHXDN4eNm8npmNIcu3vBrHI85dVPoB4Ifi8JGRNd6X_ajHtxgHmArq4GBB__l8OMM61zlRMU2vJew=w2400');">
-
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container text-center card-group-products py-2">
             <h1>Top Products</h1>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="products-container">
+                <div class="swiper mySwiper1">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                        <div class="swiper-slide">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text text-wrap">Some quick example text to build on the card
+                                                title
+                                                and make
+                                                up the bulk
+                                                of
+                                                the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="card">
-                        <img src="https://images.unsplash.com/photo-1520013817300-1f4c1cb245ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1213&q=80"
-                            class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text text-wrap">Some quick example text to build on the card title and make
-                                up the bulk
-                                of
-                                the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
+        <div class="container text-center brand-group py-4">
+            <h1>Leading Brands</h1>
+            <div id="brands-container">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="card card-cover overflow-hidden text-bg-dark rounded-3 shadow-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
         </div>
     </main>
     <footer class=" footer mt-auto bg-dark">
@@ -339,9 +351,12 @@
                 <span class="mb-3 mb-md-0 text-muted">© 2022 TechMart</span>
             </div>
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li class="ms-3"><a title="twitter" class="text-muted" href="#"><i class="fa-brands fa-twitter"></i></a>
+                </li>
+                <li class="ms-3"><a title="instagram" class="text-muted" href="#"><i
+                            class="fa-brands fa-instagram"></i></a></li>
+                <li class="ms-3"><a title="facebook" class="text-muted" href="#"><i
+                            class="fa-brands fa-facebook"></i></a></li>
             </ul>
         </div>
     </footer>
