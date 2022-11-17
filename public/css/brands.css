@@ -1,0 +1,25 @@
+html main .container-fluid>.row>.col-4>.card {
+    height: 350px;
+    background-size: cover;
+    background-position: 50%;
+}
+
+html main .container-fluid .row {
+    height: 670px;
+    overflow: auto;
+}
+
+@media (max-width:600px) {
+    html main .container-fluid .row {
+        height: fit-content;
+    }
+
+    html main .container-fluid>.row>.col-4>.card {
+        height: 100%;
+    }
+
+}
+
+html main .container-fluid .row .col-4 {
+    padding: 15px;
+}
