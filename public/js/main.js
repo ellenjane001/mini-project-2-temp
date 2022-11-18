@@ -60,7 +60,7 @@ let NavBarInitiator = {
             let li = document.createElement('li')
             li.classList.add('nav-item')
             let a = document.createElement('a')
-            a.appendChild(document.createTextNode(nav[i].Title.replace('-', ' ')))
+            a.appendChild(document.createTextNode(nav[i].Title))
             a.href = `${nav[i].Location}`
             a.classList.add('nav-link')
             a.id = nav[i].Title.toLowerCase()
