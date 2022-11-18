@@ -17,6 +17,9 @@
         defer></script>
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/b140af86b3.js" crossorigin="anonymous" defer></script>
+    <!-- custom js -->
+    <script src="../public/js/main.js" defer></script>
+    <script src="../public/js/login.js" defer></script>
 </head>
 
 <body>
@@ -35,13 +38,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Brands</a>
+                            <a class="nav-link" href="./brands.html">Brands</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Categories</a>
+                            <a class="nav-link" href="./categories.html">Categories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Just Arrived</a>
@@ -63,9 +66,9 @@
 
             <div class="right-wrapper btn-group">
                 <!-- Login Button -->
-                <button class="btn btn-outline-dark btn-sm">Login</button>
+                <a href="./login.html" class="btn btn-outline-dark btn-sm">Login</a>
                 <!-- Register Button -->
-                <button class="btn btn-dark btn-sm">Sign-up</button>
+                <a href="#" class="btn btn-dark btn-sm">Sign-up</a>
 
             </div>
         </div>
@@ -76,15 +79,17 @@
                 <div class="col-6 border border-light rounded-1 p-3">
                     <h1>Welcome</h1>
                     <p>Sign in to your account</p>
-                    <form class="p-2 d-flex flex-column gap-2">
+                    <form class="p-2 d-flex flex-column gap-2" id="login-form">
+                        <!-- username -->
                         <input type="text" id="username" name="username" class="form-control" placeholder="User name">
+                        <!-- password -->
                         <input type="password" id="password" name="password" class="form-control"
                             placeholder="Password">
                         <label for="remember">
                             <input type="checkbox" name="remember" id="remember"> Remember me?
                         </label>
                         <a href="#">Forgot password</a>
-                        <button class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>
             </div>

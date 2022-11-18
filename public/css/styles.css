@@ -33,7 +33,7 @@ html body main p.source a:hover {
     text-decoration: underline;
 }
 
-@media (max-width:375px) {
+@media (max-width:600px) {
     div.carousel-caption>p.text-primary.display-6 {
         font-size: calc(0.375rem + 1.5vw);
     }

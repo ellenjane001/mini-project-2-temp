@@ -1,0 +1,1 @@
+document.getElementById('just-arrived').classList.add('active')
