@@ -28,7 +28,7 @@ let App = {
 let NavBarInitiator = {
     appendLI: () => {
         // live
-        let nav = [{ Title: 'Home', Location: './index.html' }, { Title: 'Brands', Location: './app/brands.html' }, { Title: 'Categories', Location: './app/categories.html' }, { Title: 'Just-Arrived', Location: './app/just-arrived.html' }]
+        let nav = [{ Title: 'Home', Location: '../index.html' }, { Title: 'Brands', Location: '../app/brands.html' }, { Title: 'Categories', Location: '../app/categories.html' }, { Title: 'Just-Arrived', Location: '../app/just-arrived.html' }]
 
         //local testing
         // let nav = [{ Title: 'Home', Location: '/index.html' }, { Title: 'Brands', Location: '/app/brands.html' }, { Title: 'Categories', Location: '/app/categories.html' }, { Title: 'Just-Arrived', Location: '/app/just-arrived.html' }]
