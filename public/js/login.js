@@ -10,6 +10,8 @@ let forms = {
     username: document.getElementById('username'),
     password: document.getElementById('password')
 }
+
+const toastLogin = document.getElementById('liveToast')
 class Login {
     loginUser = (credentials) => {
         const { username, password } = credentials
@@ -21,7 +23,12 @@ class Login {
                 console.log('success')
                 document.querySelector('button[type="submit"]').classList.add("disabled")
                 localStorage.setItem('login', true)
-                location.href = '../../index.html'
+                const toast = new bootstrap.Toast(toastLogin)
+                toast.show()
+                setTimeout(() => {
+                    location.href = '../../index.html'
+                }, 3000)
+
             } else {
                 console.log('failed')
             }
