@@ -1,5 +1,4 @@
 const apiURL = 'https://fakestoreapi.com/';
-
 let login = localStorage.getItem('login')
 
 if (login === 'true')
@@ -28,7 +27,7 @@ let App = {
 
 let NavBarInitiator = {
     appendLI: () => {
-        let nav = [{ Title: 'Home', Location: '/index.html' }, { Title: 'Brands', Location: '/app/brands.html' }, { Title: 'Categories', Location: '/app/categories.html' }, { Title: 'Just-Arrived', Location: '/app/just-arrived.html' }]
+        let nav = [{ Title: 'Home', Location: '/mini-project-2-temp/index.html' }, { Title: 'Brands', Location: '/mini-project-2-temp/app/brands.html' }, { Title: 'Categories', Location: '/mini-project-2-temp/app/categories.html' }, { Title: 'Just-Arrived', Location: '/mini-project-2-temp/app/just-arrived.html' }]
         let ul = document.querySelector('.navbar-nav.ms-auto.mb-2.mb-lg-0.text-uppercase')
 
         for (let i = 0; i < nav.length; i++) {
