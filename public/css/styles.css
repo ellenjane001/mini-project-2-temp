@@ -8,6 +8,10 @@ html body main {
     font-family: 'Montserrat', sans-serif;
 }
 
+html body main .logout {
+    display: none;
+}
+
 html body main h1 {
     font-family: 'Bebas Neue', cursive;
 }
@@ -43,6 +47,6 @@ html body main p.source a:hover {
     }
 
     html body main nav.navbar>div>a.navbar-brand>img {
-       height: 65px;
+        height: 65px;
     }
 }

@@ -41,8 +41,9 @@
 
                     </ul>
                     <a title="shopping-cart" href="#" class="mx-3">
-                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                    </a>
+                        <i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+                    <a title="logout" href="javascript:void(0)" class="logout">
+                        <i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
                 </div>
             </div>
         </nav>
@@ -122,6 +123,20 @@
                 </div>
             </div>
         </div>
+         <!-- bootstrap toast -->
+         <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/null/external-information-travel-dreamstale-lineal-dreamstale.png"
+                        class="rounded me-auto" alt="icon">
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-center">
+                    Logout Successful
+                </div>
+            </div>
+        </div>
+        <!-- end bootstrap toast -->
     </main>
     <!-- footer -->
     <footer class=" footer mt-auto bg-dark">

@@ -1,10 +1,38 @@
 const apiURL = 'https://fakestoreapi.com/';
 let login = localStorage.getItem('login')
 
-if (login === 'true')
+if (login === 'true') {
+    document.querySelector('html body main .logout').style.display = 'inline-block'
     document.querySelector('.right-wrapper.btn-group').style.visibility = "hidden"
-else
+}
+else {
     document.querySelector('.right-wrapper.btn-group').style.visibility = "visible"
+    document.querySelector('html body main .logout').style.display = 'none'
+}
+
+
+const toastTrigger = document.querySelector('html body main .logout')
+const toastLiveExample = document.getElementById('liveToast')
+if (toastTrigger) {
+    toastTrigger.addEventListener('click', () => {
+        const toast = new bootstrap.Toast(toastLiveExample)
+        localStorage.removeItem('login')
+        var timeLeft = 5;
+        var elem = document.querySelector('.toast-body');
+        var timerId = setInterval(countdown, 1000);
+        toast.show()
+        function countdown() {
+            if (timeLeft == -1) {
+                clearTimeout(timerId);
+                window.location.reload();
+            } else {
+                elem.innerHTML = 'Page will reload in ' + timeLeft;
+                timeLeft--;
+            }
+        }
+    })
+}
+
 
 
 let App = {
@@ -26,10 +54,8 @@ let App = {
 }
 
 let NavBarInitiator = {
-    appendLI: () => {
-        let nav = [{ Title: 'Home', Location: '/mini-project-2-temp/index.html' }, { Title: 'Brands', Location: '/mini-project-2-temp/app/brands.html' }, { Title: 'Categories', Location: '/mini-project-2-temp/app/categories.html' }, { Title: 'Just-Arrived', Location: '/mini-project-2-temp/app/just-arrived.html' }]
+    appendLI: (nav) => {
         let ul = document.querySelector('.navbar-nav.ms-auto.mb-2.mb-lg-0.text-uppercase')
-
         for (let i = 0; i < nav.length; i++) {
             let li = document.createElement('li')
             li.classList.add('nav-item')
@@ -41,8 +67,7 @@ let NavBarInitiator = {
             li.appendChild(a)
             ul.appendChild(li)
         }
-
     }
 }
 
-NavBarInitiator.appendLI()
+
