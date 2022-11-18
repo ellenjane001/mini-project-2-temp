@@ -14,8 +14,8 @@
        object-fit: cover;
        width: 100% !important;
        height: 100% !important;
-       filter: blur(3px);
        -webkit-filter: blur(3px);
+       filter: blur(3px);
    }
 
    .content h1 {

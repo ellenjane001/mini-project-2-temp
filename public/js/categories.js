@@ -1,0 +1,1 @@
+document.getElementById('categories').classList.add('active')
