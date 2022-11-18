@@ -1,3 +1,11 @@
+let nav = [
+    { Title: 'Home', Location: '../index.html' },
+    { Title: 'Brands', Location: './brands.html' },
+    { Title: 'Categories', Location: './categories.html' },
+    { Title: 'Just-Arrived', Location: './just-arrived.html' }
+]
+NavBarInitiator.appendLI(nav)
+
 let forms = {
     username: document.getElementById('username'),
     password: document.getElementById('password')
@@ -13,7 +21,7 @@ class Login {
                 console.log('success')
                 document.querySelector('button[type="submit"]').classList.add("disabled")
                 localStorage.setItem('login', true)
-                location.href='../../index.html'
+                location.href = '../../index.html'
             } else {
                 console.log('failed')
             }
