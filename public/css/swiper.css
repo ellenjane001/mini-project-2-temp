@@ -11,7 +11,6 @@
   text-align: center;
   font-size: 18px;
   /* background: #fff; */
-
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -38,7 +37,7 @@
   height: 450px;
 }
 
-.card {
+.swiper-slide .card {
   width: 100%;
   background-size: cover;
   background-position: 50%;
@@ -46,7 +45,7 @@
 }
 
 @media (max-width: 600px) {
-  .card {
+  .swiper-slide .card {
     height: 50%;
   }
 
@@ -57,40 +56,47 @@
   #brands-container {
     height: 400px;
   }
+
+  .swiper-slide .card img {
+    display: block;
+    object-fit: fill;
+  }
 }
 
-.swiper-wrapper > .swiper-slide:nth-child(1) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(1)>.card {
   background-image: url("https://lh3.googleusercontent.com/V1G8Jm59O9nfP_bmGhgf6MROLJzzToacC7BEuCrEfRYXOpq_FsWWTsyV2yfknrMef7R9vH7168fI3uenNJC_9EVB9oTHBiHbliP420R0Tu8h-gA9QIXjIHbCBpbkCciCZx3pI07XRg=w2400");
 }
 
-.swiper-wrapper > .swiper-slide:nth-child(2) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(2)>.card {
   background-image: url("https://logodownload.org/wp-content/uploads/2014/04/intel-logo-1-1.png");
 }
 
-.swiper-wrapper > .swiper-slide:nth-child(3) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(3)>.card {
   background-image: url("https://lh3.googleusercontent.com/pkQ9NxwGzRaThigIRkd_0phjt50YiVJcqNzC4rhlWw_BtL4dtJcTeURXyth0bINZrX8t58lXjW2h3oMbfQfznXz3OYPWMrlpJRvt65MLss0O_oXtTC5g8RWQ1yz-18GAE4Y5a9MPPw=w2400");
 }
 
-.swiper-wrapper > .swiper-slide:nth-child(4) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(4)>.card {
   background-image: url("https://lh3.googleusercontent.com/XbqxfUrBnHF2ca8aG-BAinQ4KLgRaY1hnbYC4cu9nswxqXxBsLUimFiMhhwa9FCoNL9UYq0bCGYgfvbAzdUdSuYd5Bwxcpg6kQQbky9Mw6kfd4YRCNuJHwVoSraAnAq9dMtmoIsP9A=w2400");
 }
 
-.swiper-wrapper > .swiper-slide:nth-child(5) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(5)>.card {
   background-image: url("https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d.png");
 }
 
-.swiper-wrapper > .swiper-slide:nth-child(6) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(6)>.card {
   background-image: url("https://lh3.googleusercontent.com/EKxRyINVD13bU3oe146VOPWcj93t5RQf9uFZhV0VwW_wpE2YKfr43pa9Wic1oZGLjNum0OHuHsJ2U97AHWT0bHH19zM_Dl3Md9ppkn4XOhOLmzWiccBDvf_SJAiHj_RTvxx-7bRigQ=w2400");
 }
 
-.swiper-wrapper > .swiper-slide:nth-child(7) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(7)>.card {
   background-image: url("https://lh3.googleusercontent.com/VOEiIDPcbXnGArKc5bOH68yfRoeTsknUt_Ga5BO0hOeAq55WE1NWNBaba3WJ0gf6SD9_dLxpMEYikGcbmCgcAjIoj3IcDj8oesc4p3h7FA3hDuoey3V2v7rm1oecZwv6Dgz5U3wlLA=w2400");
 }
+
 /* rapoo */
-.swiper-wrapper > .swiper-slide:nth-child(8) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(8)>.card {
   background-image: url("https://lh3.googleusercontent.com/6znSrvPU0JEvjS01vkNgKc-QU0ej10AOrEiNSAjvWLibiirxQAocsxcwf366UaZyjY4jG6lx252B5khFHED5bwOcn5K5pYwMLfdrNwk7hqHkP7YVsBQ9pDOKixqX6_AiU3Dhml_4ZA=w2400");
 }
+
 /* razer */
-.swiper-wrapper > .swiper-slide:nth-child(9) > .card {
+.swiper-wrapper>.swiper-slide:nth-child(9)>.card {
   background-image: url("https://lh3.googleusercontent.com/CWZX9LmTbYVjmqQKrprFVLZWRSDRsdhOWXcedbFcWe6lm3QoMd5pmUW_Pr2ZrAJhaii8rwa0bcYO8nBnwVo1IC7OfYnypzl0p5IrumUUwv5OeYJIO9cw_YcYBNaySeU2Yja2JUaeIw=w2400");
 }
