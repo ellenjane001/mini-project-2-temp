@@ -10,63 +10,63 @@ html main .container-fluid .row {
 }
 
 /* <!-- AMD --> */
-html main .container-fluid div.row>.col-3:nth-child(1)>.card {
+html main .container-fluid div.row>.p-2:nth-child(1)>.card {
     background-image: url('https://lh3.googleusercontent.com/V1G8Jm59O9nfP_bmGhgf6MROLJzzToacC7BEuCrEfRYXOpq_FsWWTsyV2yfknrMef7R9vH7168fI3uenNJC_9EVB9oTHBiHbliP420R0Tu8h-gA9QIXjIHbCBpbkCciCZx3pI07XRg=w2400');
 }
 
 /* <!-- Intel --> */
 
-html main .container-fluid div.row>.col-3:nth-child(2)>.card {
+html main .container-fluid div.row>.p-2:nth-child(2)>.card {
     background-image: url('https://logodownload.org/wp-content/uploads/2014/04/intel-logo-1-1.png');
 }
 
 /* <!-- tuf --> */
-html main .container-fluid div.row>.col-3:nth-child(3)>.card {
+html main .container-fluid div.row>.p-2:nth-child(3)>.card {
     background-image: url('https://lh3.googleusercontent.com/pkQ9NxwGzRaThigIRkd_0phjt50YiVJcqNzC4rhlWw_BtL4dtJcTeURXyth0bINZrX8t58lXjW2h3oMbfQfznXz3OYPWMrlpJRvt65MLss0O_oXtTC5g8RWQ1yz-18GAE4Y5a9MPPw=w2400');
 }
 
 /* <!-- msi --> */
-html main .container-fluid div.row>.col-3:nth-child(4)>.card {
+html main .container-fluid div.row>.p-2:nth-child(4)>.card {
     background-image: url('https://lh3.googleusercontent.com/XbqxfUrBnHF2ca8aG-BAinQ4KLgRaY1hnbYC4cu9nswxqXxBsLUimFiMhhwa9FCoNL9UYq0bCGYgfvbAzdUdSuYd5Bwxcpg6kQQbky9Mw6kfd4YRCNuJHwVoSraAnAq9dMtmoIsP9A=w2400');
 }
 
 /* <!-- nvidia --> */
-html main .container-fluid div.row>.col-3:nth-child(5)>.card {
+html main .container-fluid div.row>.p-2:nth-child(5)>.card {
     background-image: url('https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/01-nvidia-logo-vert-500x200-2c50-d.png');
 }
 
 /* <!-- gigabyte --> */
-html main .container-fluid div.row>.col-3:nth-child(6)>.card {
+html main .container-fluid div.row>.p-2:nth-child(6)>.card {
     background-image: url('https://lh3.googleusercontent.com/EKxRyINVD13bU3oe146VOPWcj93t5RQf9uFZhV0VwW_wpE2YKfr43pa9Wic1oZGLjNum0OHuHsJ2U97AHWT0bHH19zM_Dl3Md9ppkn4XOhOLmzWiccBDvf_SJAiHj_RTvxx-7bRigQ=w2400');
 }
 
 /* <!-- rog --> */
-html main .container-fluid div.row>.col-3:nth-child(7)>.card {
+html main .container-fluid div.row>.p-2:nth-child(7)>.card {
     background-image: url('https://lh3.googleusercontent.com/VOEiIDPcbXnGArKc5bOH68yfRoeTsknUt_Ga5BO0hOeAq55WE1NWNBaba3WJ0gf6SD9_dLxpMEYikGcbmCgcAjIoj3IcDj8oesc4p3h7FA3hDuoey3V2v7rm1oecZwv6Dgz5U3wlLA=w2400');
 }
 
 /* <!-- toshiba --> */
-html main .container-fluid div.row>.col-3:nth-child(8)>.card {
+html main .container-fluid div.row>.p-2:nth-child(8)>.card {
     background-image: url('https://lh3.googleusercontent.com/nzPxXokTw8IddVjQHfT0jIXeG10l11MQmhRnzHRuyZvvxj6ucwsc3PvnZndGhSu0PiHDQjRgzh4iZfKaVXNznRbq44UycomRd1SUfgYGTxQ2rCVH9zkDvg4evMTBz32oi9gjkCE5ag=w2400');
 }
 
 /* <!-- razer --> */
-html main .container-fluid div.row>.col-3:nth-child(9)>.card {
+html main .container-fluid div.row>.p-2:nth-child(9)>.card {
     background-image: url('https://lh3.googleusercontent.com/CWZX9LmTbYVjmqQKrprFVLZWRSDRsdhOWXcedbFcWe6lm3QoMd5pmUW_Pr2ZrAJhaii8rwa0bcYO8nBnwVo1IC7OfYnypzl0p5IrumUUwv5OeYJIO9cw_YcYBNaySeU2Yja2JUaeIw=w2400');
 }
 
 /* <!-- rapoo --> */
-html main .container-fluid div.row>.col-3:nth-child(10)>.card {
+html main .container-fluid div.row>.p-2:nth-child(10)>.card {
     background-image: url('https://lh3.googleusercontent.com/6znSrvPU0JEvjS01vkNgKc-QU0ej10AOrEiNSAjvWLibiirxQAocsxcwf366UaZyjY4jG6lx252B5khFHED5bwOcn5K5pYwMLfdrNwk7hqHkP7YVsBQ9pDOKixqX6_AiU3Dhml_4ZA=w2400');
 }
 
 /* <!-- predator --> */
-html main .container-fluid div.row>.col-3:nth-child(11)>.card {
+html main .container-fluid div.row>.p-2:nth-child(11)>.card {
     background-image: url('https://lh3.googleusercontent.com/PPzGT7hyozTp1YNz4skwggEqSlHTEp5XwTR5Q85PxQWA3WVqtFH3pchizR2vOrytEL8Q3dXzITPUraB-Ohmmauqw3TZdIXxGNzwSdW3IZXAH4lY13VW1oBVA3yNCBfzifsGh2izCKQ=w2400');
 }
 
 /* <!-- kingspec --> */
-html main .container-fluid div.row>.col-3:nth-child(12)>.card {
+html main .container-fluid div.row>.p-2:nth-child(12)>.card {
     background-image: url('https://lh3.googleusercontent.com/xBjAng0SjhHZqbAhtUrl6tCYKHCDfDBU_QtCyW7BjbqlEoPCpUNcvQ49TAIOQ7kQvpLav1Jiw97G0vqdPOTBjPnLMLcKhGtSMtwF1j9CsJ1qKUpCdjNYkduKSx8dxa67Yiueyny5KA=w2400');
 }
 
@@ -75,12 +75,19 @@ html main .container-fluid div.row>.col-3:nth-child(12)>.card {
         height: fit-content;
     }
 
-    html main .container-fluid>.row>.col-4>.card {
+    html main .container-fluid>.row>.card {
         height: 100%;
     }
 
+    html main .container-fluid.text-center.py-2.px-3>.row {
+        flex-direction: column;
+    }
+
+    html main .container-fluid.text-center.py-2.px-3>.row>* {
+        width: 100% !important;
+    }
 }
 
-html main .container-fluid .row .col-4 {
+html main .container-fluid .row .col {
     padding: 15px;
 }
