@@ -10,9 +10,3 @@ var swiper = new Swiper(".mySwiper", {
         clickable: true,
     },
 });
-var swiper = new Swiper(".mySwiper1", {
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-});
