@@ -1,4 +1,5 @@
-const apiURL = 'https://fakestoreapi.com/';
+const apiURL = 'https://fakestoreapi.com/'
+const firebaseAPI = 'https://techmart-96763-default-rtdb.asia-southeast1.firebasedatabase.app/'
 let login = localStorage.getItem('login')
 
 if (login === 'true') {
@@ -50,6 +51,20 @@ let App = {
         }
 
         return requestFetch(`${apiURL}${url}`)
+    },
+    GET: async (url = '') => {
+        let requestFetch = async (url) => {
+            console.log('** beforeSend request fetch **');
+            return await fetch(url, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        }
+
+        return requestFetch(`${firebaseAPI}${url}`)
     }
 }
 
