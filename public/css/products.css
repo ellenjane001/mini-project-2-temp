@@ -88,11 +88,18 @@ aside {
     font-style: normal;
     padding: 10px;
     color: white;
-    
 }
+
 .btn-shop-now:hover{
     background-color: #0D4C92;
     color: white;
+}
+.card-1 card{
+    display: flex;
+    flex-direction: row;
+}
+section{
+    display: flex;
 }
 .search-bar{
     font-style: italic;
