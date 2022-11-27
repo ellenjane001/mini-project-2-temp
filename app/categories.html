@@ -9,6 +9,7 @@
     <!-- custom CSS -->
     <link rel="stylesheet" href="../public/css/styles.css">
     <link rel="stylesheet" href="../public/css/products.css">
+    <link rel="stylesheet" href="../public/css/cart.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -53,8 +54,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
             </ul>
-            <a title="shopping-cart" href="#" class="mx-3">
-              <i class="fa-solid fa-cart-shopping fa-xl"></i></a>
+            <div class="cart-btn">
+              <i id="cart" class="fas fa-shopping-cart"></i>
+              <span class="cart-quantity">0</span>
+            </div>
             <a title="logout" href="javascript:void(0)" class="logout">
               <i class="fa-solid fa-right-from-bracket fa-xl"></i></a>
           </div>
