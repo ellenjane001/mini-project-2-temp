@@ -11,9 +11,10 @@ else {
     document.querySelector('html body main .logout').style.display = 'none'
 }
 
-
+// Bootstrap toast
 const toastTrigger = document.querySelector('html body main .logout')
 const toastLiveExample = document.getElementById('liveToast')
+
 if (toastTrigger) {
     toastTrigger.addEventListener('click', () => {
         const toast = new bootstrap.Toast(toastLiveExample)
