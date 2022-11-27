@@ -1,4 +1,3 @@
-// live
 let nav = [
     { Title: 'Home', Location: './index.html' },
     { Title: 'Brands', Location: './app/brands.html' },

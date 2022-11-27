@@ -13,21 +13,6 @@ let forms = {
 
 const toastLogin = document.getElementById('liveToast')
 class Login {
-    loginUser = (credentials) => {
-        const { username, password } = credentials
-        App.POST(`auth/login`, { username, password }).then(res => {
-            console.log(res)
-            return res.status
-        }).then(data => {
-            if (data == 200) {
-
-
-            } else {
-                console.log('failed')
-            }
-        })
-    }
-
     clearBorder = () => {
         forms.username.style.border = '1px solid #ced4da'
         forms.password.style.border = '1px solid #ced4da'
@@ -35,21 +20,33 @@ class Login {
 
     getUsers = async (credentials) => {
         const { username, password } = credentials
+        let login = false
         await App.GET('user.json', {}).then(res => res.json()).then(response => {
             Object.keys(response).forEach(function (key) {
                 if (response[key].username == username && response[key].password == password) {
                     console.log('success')
-                    document.querySelector('button[type="submit"]').classList.add("disabled")
-                    localStorage.setItem('login', true)
-                    const toast = new bootstrap.Toast(toastLogin)
-                    toast.show()
-                    setTimeout(() => {
-                        location.href = '../../index.html'
-                    }, 3000)
+                    login = true
                 }
-                else
-                    alert('failed')
             });
+
+            if (login == true) {
+                document.querySelector('button[type="submit"]').classList.add("disabled")
+                localStorage.setItem('login', true)
+                const toast = new bootstrap.Toast(toastLogin)
+                toast.show()
+                setTimeout(() => {
+                    location.href = '../../index.html'
+                }, 3000)
+            }
+            else {
+                alert('failed')
+                forms.username.style.border = "1px solid red"
+                forms.password.style.border = "1px solid red"
+                forms.username.value = ''
+                forms.password.value = ''
+            }
+
+
         })
     }
 }
