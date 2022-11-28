@@ -2,4 +2,17 @@
     .row {
         flex-direction: column;
     }
+
+    .related-prod-card .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .related-prod-card .row>* {
+        width: 100%;
+    }
+
+    .related-prod-card .row>.col-3.head-card>img {
+        width: 100%;
+    }
 }
