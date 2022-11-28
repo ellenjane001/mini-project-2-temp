@@ -15,6 +15,7 @@ class Case {
         
         let image = document.createElement('img')
         image.classList.add('card-img-top')
+        image.classList.add('img-fluid')
         image.src = image_link
         let body = document.createElement('div')
         body.classList.add('card-body')
