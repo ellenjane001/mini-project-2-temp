@@ -1,4 +1,5 @@
-const apiURL = 'https://fakestoreapi.com/';
+const apiURL = 'https://fakestoreapi.com/'
+const firebaseAPI = 'https://techmart-96763-default-rtdb.asia-southeast1.firebasedatabase.app/'
 let login = localStorage.getItem('login')
 
 if (login === 'true') {
@@ -10,9 +11,10 @@ else {
     document.querySelector('html body main .logout').style.display = 'none'
 }
 
-
+// Bootstrap toast
 const toastTrigger = document.querySelector('html body main .logout')
 const toastLiveExample = document.getElementById('liveToast')
+
 if (toastTrigger) {
     toastTrigger.addEventListener('click', () => {
         const toast = new bootstrap.Toast(toastLiveExample)
@@ -50,6 +52,20 @@ let App = {
         }
 
         return requestFetch(`${apiURL}${url}`)
+    },
+    GET: async (url = '') => {
+        let requestFetch = async (url) => {
+            console.log('** beforeSend request fetch **');
+            return await fetch(url, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        }
+
+        return requestFetch(`${firebaseAPI}${url}`)
     }
 }
 

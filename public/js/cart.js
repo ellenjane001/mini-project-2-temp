@@ -1,5 +1,5 @@
 // open cart modal
-const cart = document.querySelector('#cart');
+const cart = document.querySelector('.cart-btn');
 const cartModalOverlay = document.querySelector('.cart-modal-overlay');
 
 cart.addEventListener('click', () => {
@@ -37,7 +37,7 @@ for (var i = 0; i < addToCart.length; i++) {
 function addToCartClicked (event) {
   button = event.target;
   var cartItem = button.parentElement;
-  
+
   var price = cartItem.getElementsByClassName('product-price')[0].innerText;
   var imageSrc = cartItem.getElementsByClassName('product-image')[0].src;
   addItemToCart (price, imageSrc);
@@ -49,14 +49,14 @@ function addItemToCart (price, imageSrc) {
   productRow.classList.add('product-row');
   var productRows = document.getElementsByClassName('product-rows')[0];
   var cartImage = document.getElementsByClassName('cart-image');
-  
+
   for (var i = 0; i < cartImage.length; i++){
     if (cartImage[i].src == imageSrc){
       alert ('This item has already been added to the cart')
       return;
     }
   }
-  
+
   var cartRowItems = `
   <div class="product-row">
         <img class="cart-image" src="${imageSrc}" alt="">
@@ -64,7 +64,7 @@ function addItemToCart (price, imageSrc) {
         <input class="product-quantity" type="number" value="1">
         <button class="remove-btn">Remove</button>
         </div>
-        
+
       `
   productRow.innerHTML = cartRowItems;
   productRows.append(productRow);
@@ -114,7 +114,7 @@ function updateCartPrice() {
   var price = parseFloat(priceElement.innerText.replace('$', ''))
   var quantity = quantityElement.value
   total = total + (price * quantity )
-    
+
   }
   document.getElementsByClassName('total-price')[0].innerText =  '$' + total
 
@@ -135,7 +135,7 @@ function purchaseBtnClicked () {
  var cartItems = document.getElementsByClassName('product-rows')[0]
  while (cartItems.hasChildNodes()) {
    cartItems.removeChild(cartItems.firstChild)
-   
+
  }
   updateCartPrice()
 }

@@ -2,7 +2,6 @@ let nav = [
     { Title: 'Home', Location: '../index.html' },
     { Title: 'Brands', Location: './brands.html' },
     { Title: 'Categories', Location: './categories.html' },
-    { Title: 'Shop', Location: './shop.html' },
 ]
 NavBarInitiator.appendLI(nav)
 
@@ -13,14 +12,23 @@ let forms = {
 
 const toastLogin = document.getElementById('liveToast')
 class Login {
-    loginUser = (credentials) => {
+    clearBorder = () => {
+        forms.username.style.border = '1px solid #ced4da'
+        forms.password.style.border = '1px solid #ced4da'
+    }
+
+    getUsers = async (credentials) => {
         const { username, password } = credentials
-        App.POST(`auth/login`, { username, password }).then(res => {
-            console.log(res)
-            return res.status
-        }).then(data => {
-            if (data == 200) {
-                console.log('success')
+        let login = false
+        await App.GET('user.json', {}).then(res => res.json()).then(response => {
+            Object.keys(response).forEach(function (key) {
+                if (response[key].username == username && response[key].password == password) {
+                    console.log('success')
+                    login = true
+                }
+            });
+
+            if (login == true) {
                 document.querySelector('button[type="submit"]').classList.add("disabled")
                 localStorage.setItem('login', true)
                 const toast = new bootstrap.Toast(toastLogin)
@@ -28,32 +36,31 @@ class Login {
                 setTimeout(() => {
                     location.href = '../../index.html'
                 }, 3000)
-
-            } else {
-                console.log('failed')
             }
+            else {
+                alert('failed')
+                forms.username.style.border = "1px solid red"
+                forms.password.style.border = "1px solid red"
+                forms.username.value = ''
+                forms.password.value = ''
+            }
+
+
         })
     }
-
-    clearBorder = () => {
-        forms.username.style.border = '1px solid #ced4da'
-        forms.password.style.border = '1px solid #ced4da'
-    }
 }
 
-document.body.onload = () => {
-
-}
 
 document.getElementById('login-form').onsubmit = (e) => {
     e.preventDefault()
-
     let credentials = {
         username: forms.username.value,
         password: forms.password.value
     }
+
+
     if (credentials.username !== '' && credentials.password !== '')
-        new Login().loginUser(credentials)
+        new Login().getUsers(credentials)
     else {
         if (credentials.username === '' && credentials.password === '') {
             forms.username.style.border = "1px solid red"
@@ -68,4 +75,3 @@ document.getElementById('login-form').onsubmit = (e) => {
 
 forms.username.onfocus = new Login().clearBorder
 forms.password.onfocus = new Login().clearBorder
-

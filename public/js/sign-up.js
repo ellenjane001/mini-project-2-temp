@@ -4,4 +4,3 @@ let nav = [
     { Title: 'Categories', Location: './categories.html' },
 ]
 NavBarInitiator.appendLI(nav)
-document.getElementById('categories').classList.add('active')
