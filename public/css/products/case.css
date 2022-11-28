@@ -1,0 +1,16 @@
+html main .col .card img {
+    width: 100%;
+    height: 450px;
+    padding: 10px;
+}
+
+html main .col .card {
+    height: 600px;
+}
+
+html main .col .card .card-body {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
