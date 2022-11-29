@@ -2,29 +2,41 @@ html main .row .col .card img {
   padding: 10px;
 }
 
+html main .container div.position-absolute {
+  top: 15%;
+  left: 100px;
+}
+
+html main .card-img-overlay {
+  top: 220px;
+}
+
+html main .card-img-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+html main .card:hover h6 {
+  display: block;
+}
+
+html main .card-img-overlay>h6 {
+  display: none;
+}
+
+html main h1[class="text-center"]~.row>.col-12>.row>.col-2 {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width:600px) {
-  html main .products-container .row>.col {
-    height: 85%;
+  div.container.text-center>.row {
+    flex-direction: column;
   }
 
-  html main .products-container .row>.col>.card>.card-body {
-    height: 150px;
-  }
-
-  html main .products-container .row>.col>.card>.card-body>* {
-    font-size: 10px;
-  }
-
-  html main .container .carousel-caption p[class="h4"] {
-    display: none;
-  }
-
-  html main .container .carousel-caption p[class="h4 text-primary"] {
-    display: none;
-  }
-
-  html main .container .carousel-caption p[class="h5"] {
-    display: none;
+  div.container.text-center>.row>* {
+    width: 100%;
   }
 }
 
@@ -35,12 +47,10 @@ html main .row .col .card img {
 }
 
 @media screen and (min-width:820px) and (max-width:820px) {
-  h5[class="card-title"] {
-    font-size: 0.75rem;
-  }
 
-  a[rel="noopener"] {
-    font-size: 0.75rem;
+  div.container.text-center>.row>* {
+    width: 25%;
+    vertical-align: middle;
   }
 
   .swiper.mySwiper.swiper-initialized.swiper-horizontal.swiper-ios.swiper-backface-hidden {
