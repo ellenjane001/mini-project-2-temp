@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Mart - Categories</title>
+  <title>Tech Mart - Products</title>
   <!-- favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="../public/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon/favicon-32x32.png">
@@ -29,7 +29,7 @@
   <script src="https://kit.fontawesome.com/b140af86b3.js" crossorigin="anonymous" defer></script>
   <!-- custom js -->
   <script src="../public/js/main.js" defer></script>
-  <script src="../public/js/categories.js" defer></script>
+  <script src="../public/js/products.js" defer></script>
   <!-- chat widget -->
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
@@ -61,12 +61,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
           </ul>
-          <div class="cart-btn">
-            <i id="cart" class="fas fa-shopping-cart"></i>
-            <span class="cart-quantity">0</span>
-          </div>
-          <a title="logout" href="javascript:void(0)" class="logout">
-            <i class="fa-solid fa-right-from-bracket fa-2xl"></i></a>
+          <button type="button" class="cart-btn btn btn-link position-relative text-dark">
+            <i class="fa-solid fa-cart-shopping fa-xl"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              99+
+            </span>
+          </button>
+          <button type="button" title="logout" href="javascript:void(0)" class="btn btn-link logout m-2">
+            <i class="fa-solid fa-right-from-bracket fa-2xl"></i></button>
         </div>
       </div>
     </nav>
@@ -85,6 +87,52 @@
       </div>
     </div>
     <!-- template stops here -->
+
+    <div class="container text-center">
+      <h1>Categories</h1>
+      <div class="row">
+        <div class="col-4">
+          <h3>Case</h3>
+          <a href="./products/case.html">View</a>
+        </div>
+        <div class="col-4">
+          <h3>Cooling</h3>
+        </div>
+        <div class="col-4">
+          <h3>Display Device</h3>
+        </div>
+        <div class="col-4">
+          <h3>GPU</h3>
+        </div>
+        <div class="col-4">
+          <h3>Input Device</h3>
+        </div>
+        <div class="col-4">
+          <h3>Mother Board</h3>
+        </div>
+        <div class="col-4">
+          <h3>Operating System</h3>
+        </div>
+        <div class="col-4">
+          <h3>Processor</h3>
+          <a href="./products/processor.html">View</a> /
+          <a href="./products/amd-processor.html">AMD Processor</a>
+        </div>
+        <div class="col-4">
+          <h3>Power Supply Unit</h3>
+        </div>
+        <div class="col-4">
+          <h3>RAM</h3>
+        </div>
+        <div class="col-4">
+          <h3>Storage Device</h3>
+        </div>
+        <div class="col-4">
+          <h3>Misc.</h3>
+        </div>
+      </div>
+    </div>
+
     <!-- bootstrap toast -->
     <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
       <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -98,92 +146,8 @@
       </div>
     </div>
     <!-- end bootstrap toast -->
-    <div class="container">
-      <div class="prod-type">
-        <h2>AMD PROCESSOR</h2>
-        <hr class="line-red-1 m-auto">
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-2">
-          <aside>
-            <h5 class="aside-p">SEARCH PRODUCT</h5>
-            <hr class="line-red">
-            <input type="text" name="Search" class="item-search" id="search" placeholder="Search...">
-            <h5 class="aside-p-2">TOP RATED PRODUCTS</h5>
-            <hr class="line-red">
-          </aside>
-        </div>
-        <div class="col-10">
-          <main class="cards">
-            <article class="card">
-              <a href="prod_AMD_Ryzen9.html">
-                <img src="../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-                <div class="text">
-                  <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                  <button class="btn btn-outline-primary">More Info</button>
-                </div>
-              </a>
-            </article>
-            <article class="card">
-              <a href="prod_AMD_Ryzen7.html">
-                <img src="../public/img/AMD_RYZEN_7_7700X.png" alt="Sample photo">
-                <div class="text">
-                  <h3>AMD Ryzen™ 7 7700X Processor </h3>
-                  <button class="btn btn-outline-primary">Here's how</button>
-                </div>
-              </a>
-            </article>
-            <article class="card">
-              <img src="../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-              <div class="text">
-                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                <button class="btn btn-outline-primary">More Info</button>
-              </div>
-            </article>
-            <article class="card">
-              <img src="../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-              <div class="text">
-                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                <button class="btn btn-outline-primary">More Info</button>
-              </div>
-            </article>
-            <article class="card">
-              <img src="../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-              <div class="text">
-                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                <button class="btn btn-outline-primary">More Info</button>
-              </div>
-            </article>
-            <article class="card">
-              <img src="../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-              <div class="text">
-                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                <button class="btn btn-outline-primary">More Info</button>
-              </div>
-            </article>
-            <article class="card">
-              <img src="../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-              <div class="text">
-                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                <button class="btn btn-outline-primary">More Info</button>
-              </div>
-            </article>
-            <article class="card">
-              <img src="../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-              <div class="text">
-                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                <button class="btn btn-outline-primary">More Info</button>
-              </div>
-            </article>
-          </main>
-        </div>
-      </div>
-    </div>
+
   </main>
-
-
   <!-- footer -->
   <footer class=" footer mt-auto bg-dark">
     <div class="row d-flex flex-wrap justify-content-between align-items-center py-3 mx-3">

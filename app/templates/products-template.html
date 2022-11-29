@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Mart - Customer Login</title>
+    <title>Tech Mart</title>
     <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/assets/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../public/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../public/assets/favicon/site.webmanifest">
     <!-- end favicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- custom CSS -->
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="../../public/css/products/case.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -26,22 +26,7 @@
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/b140af86b3.js" crossorigin="anonymous" defer></script>
     <!-- custom js -->
-    <script src="../public/js/main.js" defer></script>
-    <script src="../public/js/login.js" defer></script>
-    <!-- chat widget -->
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/637ee03ab0d6371309d0cb8a/1gijpnpei';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
+    <script src="../../public/js/main.js" defer></script>
 </head>
 
 <body>
@@ -49,7 +34,7 @@
         <!-- navigation -->
         <nav class="navbar navbar-expand-lg px-3 border border-light">
             <div class="container">
-                <a class="navbar-brand" href="../index.html"><img
+                <a class="navbar-brand" href="../../index.html"><img
                         src="https://lh3.googleusercontent.com/Dip-9IoATCpV77-ypDRkF0ro7bMA0GQ1ahI_iJN5aacUslAYlKM8E4W4TRyqrQKKMk197f6XosEFEH0kjugf6h-qic7lzYIhsy0e8b75SPJzY7TYCHjOYI-mPgoF8SswcwAqOKJQYg=w2400"
                         alt="img" height="100"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -59,7 +44,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
-
+                        <!-- main js file will append li element here -->
                     </ul>
                     <a title="shopping-cart" href="#" class="mx-3">
                         <i class="fa-solid fa-cart-shopping fa-xl"></i></a>
@@ -78,52 +63,44 @@
 
             <div class="right-wrapper btn-group">
                 <!-- Login Button -->
-                <a href="./login.html" class="btn btn-outline-dark btn-sm disabled">Login</a>
+                <a href="./login.html" class="btn btn-outline-dark btn-sm">Login</a>
                 <!-- Register Button -->
                 <a href="./sign-up.html" class="btn btn-dark btn-sm">Sign-up</a>
             </div>
         </div>
         <!-- template stops here -->
-        <div class="container text-center position-relative">
-            <div class="row border rounded m-3">
-                <div class="col-6 p-lg-5 m-auto">
-                    <h1>Welcome</h1>
-                    <p>Sign in to your account</p>
-                    <!-- login form -->
-                    <form class="p-2 d-flex flex-column gap-2" id="login-form">
-                        <!-- username -->
-                        <input type="text" id="username" name="username" class="form-control" placeholder="User name">
-                        <!-- password -->
-                        <input type="password" id="password" name="password" class="form-control"
-                            placeholder="Password">
-                        <label for="remember">
-                            <input type="checkbox" name="remember" id="remember"> Remember me?
-                        </label>
-                        <a href="#">Forgot password</a>
-                        <button type="submit" class="btn btn-primary">Login</button>
+        <div class="container pt-2">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../products.html">Products</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{Put Product Name HERE}</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="container text-center p-3">
+            <h1>{Put Product Name HERE}</h1>
+            <div class="row">
 
-                    </form>
-                    <a title="admin-login" class="top-right" href="./admin/admin-login.html"><i
-                            class="fa-solid fa-screwdriver-wrench"></i></a>
-                </div>
             </div>
         </div>
+
         <!-- bootstrap toast -->
         <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
-            <div id="liveToast" class="toast text-bg-primary" role="alert" aria-live="assertive" aria-atomic="true">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="https://img.icons8.com/office/16/null/information.png" class="rounded me-auto" alt="icon">
+                    <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/null/external-information-travel-dreamstale-lineal-dreamstale.png"
+                        class="rounded me-auto" alt="icon">
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body text-center">
-                    Signin Successful
+                    Logout Successful
                 </div>
             </div>
         </div>
         <!-- end bootstrap toast -->
     </main>
     <!-- footer -->
-    <footer class="footer mt-auto bg-dark">
+    <footer class=" footer mt-auto bg-dark">
         <div class="row d-flex flex-wrap justify-content-between align-items-center py-3 mx-3">
             <div class="col-md-4 d-flex align-items-center">
                 <span class="mb-3 mb-md-0 text-muted">© 2022 TechMart</span>

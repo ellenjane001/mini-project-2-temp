@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Mart</title>
+    <title>Tech Mart - Products</title>
     <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../public/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../public/assets/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../public/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../public/assets/favicon/site.webmanifest">
     <!-- end favicon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <!-- custom CSS -->
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../../public/css/styles.css">
+    <link rel="stylesheet" href="../../public/css/products/case.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -24,6 +25,8 @@
         defer></script>
     <!-- font-awesome -->
     <script src="https://kit.fontawesome.com/b140af86b3.js" crossorigin="anonymous" defer></script>
+    <!-- custom js -->
+    <script src="../../public/js/main.js" defer></script>
 </head>
 
 <body>
@@ -66,6 +69,21 @@
             </div>
         </div>
         <!-- template stops here -->
+        <div class="container pt-2">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../products.html">Products</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{Put Product Name HERE}</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="container text-center p-3">
+            <h1>{Put Product Name HERE}</h1>
+            <div class="row">
+
+            </div>
+        </div>
+
         <!-- bootstrap toast -->
         <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
             <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

@@ -1,7 +1,7 @@
 let nav = [
     { Title: 'Home', Location: '../index.html' },
     { Title: 'Brands', Location: './brands.html' },
-    { Title: 'Categories', Location: './categories.html' },
+    { Title: 'Products', Location: './products.html' },
 ]
 NavBarInitiator.appendLI(nav)
-document.getElementById('categories').classList.add('active')
+document.getElementById('products').classList.add('active')

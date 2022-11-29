@@ -110,7 +110,6 @@ img {
 .cart-modal {
   height: 100vh;
   width: 50%;
-  background-color: rgb(50, 50, 50);
   float: right;
   overflow: scroll;
   overflow-x: hidden;
@@ -118,14 +117,10 @@ img {
 
 #close-btn {
   font-size: 1.5rem;
-  float: right;
-  margin: .5em 2em 0 0;
-  color: white;
   cursor: pointer;
 }
 
 .cart-is-empty {
-  color: white;
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 1em;
@@ -139,12 +134,7 @@ img {
   /*   display: none; */
 }
 
-.cart-total {
-  color: white;
-}
-
 .total-price {
-  color: white;
   font-size: 2rem;
   display: block;
 }
