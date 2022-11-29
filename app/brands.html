@@ -61,12 +61,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
                     </ul>
-                    <div class="cart-btn">
-                        <i id="cart" class="fas fa-shopping-cart"></i>
-                        <span class="cart-quantity">0</span>
-                    </div>
-                    <a title="logout" href="javascript:void(0)" class="logout">
-                        <i class="fa-solid fa-right-from-bracket fa-2xl"></i></a>
+                    <button type="button" class="cart-btn btn btn-link position-relative text-dark">
+                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            99+
+                        </span>
+                    </button>
+                    <button type="button" title="logout" href="javascript:void(0)" class="btn btn-link logout m-2">
+                        <i class="fa-solid fa-right-from-bracket fa-2xl"></i></button>
                 </div>
             </div>
         </nav>

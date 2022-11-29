@@ -1,7 +1,7 @@
 let nav = [
     { Title: 'Home', Location: '../index.html' },
     { Title: 'Brands', Location: './brands.html' },
-    { Title: 'Categories', Location: './categories.html' },
+    { Title: 'Products', Location: './products.html' },
 ]
 NavBarInitiator.appendLI(nav)
 
@@ -34,7 +34,7 @@ class Login {
                 const toast = new bootstrap.Toast(toastLogin)
                 toast.show()
                 setTimeout(() => {
-                    location.href = '../../index.html'
+                    location.href = '../index.html'
                 }, 3000)
             }
             else {
