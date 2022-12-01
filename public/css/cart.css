@@ -21,18 +21,18 @@ img {
   /* margin: 1em 4em 0 0; */
 }
 
-.cart-quantity {
+/* .cart-quantity {
   color: white;
   background-color: red;
   padding: .2em .3em;
   position: absolute;
   /* margin: .8em 7.5em 0 0; */
-  margin: -1.2em -0.5em 0 0;
-  right: 0;
-  border: solid 2px red;
-  border-radius: 15px;
-  font-weight: bolder;
-}
+/* margin: -1.2em -0.5em 0 0;
+right: 0;
+border: solid 2px red;
+border-radius: 15px;
+font-weight: bolder; */
+/* } */
 
 .items-container {
   display: flex;
