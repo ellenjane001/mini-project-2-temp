@@ -86,4 +86,32 @@ let NavBarInitiator = {
     }
 }
 
-
+let ProductObj = {
+    generateCard: (text, image_link, data) => {
+        let column = document.createElement('div')
+        column.classList.add('col')
+        column.classList.add('m-2')
+        let div = document.createElement('div')
+        div.classList.add('card')
+        let image = document.createElement('img')
+        image.classList.add('card-img-top')
+        image.classList.add('img-fluid')
+        image.src = image_link
+        let body = document.createElement('div')
+        body.classList.add('card-body')
+        let h5 = document.createElement('h5')
+        h5.classList.add('card-title')
+        h5.innerText = text
+        let btn = document.createElement('button')
+        btn.appendChild(document.createTextNode('View'))
+        btn.setAttribute('data-value', `${JSON.stringify(data)}`)
+        btn.classList.add('btn')
+        btn.classList.add('btn-primary')
+        body.appendChild(h5)
+        body.appendChild(btn)
+        div.appendChild(image)
+        div.appendChild(body)
+        column.appendChild(div)
+        return column
+    }
+}
