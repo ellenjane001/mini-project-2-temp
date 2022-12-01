@@ -30,7 +30,6 @@
         defer></script>
     <!-- custom js -->
     <script src="../../../public/js/main.js" defer></script>
-    <script src="../../../public/js/categories.js" defer></script>
 </head>
 
 <body>
@@ -50,10 +49,13 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
                     </ul>
                     <!--   end of cart modal -->
-                    <div class="cart-btn">
-                        <i id="cart" class="fas fa-shopping-cart"></i>
-                        <span class="cart-quantity">0</span>
-                    </div>
+                    <button type="button" class="cart-btn btn btn-link position-relative text-dark">
+                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-quantity">
+                            0
+                        </span>
+                    </button>
                     <a title="logout" href="javascript:void(0)" class="logout">
                         <i class="fa-solid fa-right-from-bracket fa-2xl"></i></a>
                 </div>
@@ -170,26 +172,35 @@
             </div>
 
         </div>
-        <footer class=" footer mt-auto bg-dark">
-            <div class="row d-flex flex-wrap justify-content-between align-items-center py-3 mx-3">
-                <div class="col-md-4 d-flex align-items-center">
-                    <span class="mb-3 mb-md-0 text-muted">© 2022 TechMart</span>
+        <!-- cart-modal -->
+        <div class="cart-modal-overlay">
+            <div class="cart-modal text-bg-light">
+                <button title="close" type="button" class="btn btn-link" id="close-btn">
+                    <i class="fas fa-times"></i></button>
+                <h1 class="cart-is-empty">Cart is empty</h1>
+                <div class="product-rows">
                 </div>
-                <!-- socials -->
-                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                    <li class="ms-3"><a title="twitter" class="text-muted" href="#"><i
-                                class="fa-brands fa-twitter"></i></a>
-                    </li>
-                    <li class="ms-3"><a title="instagram" class="text-muted" href="#"><i
-                                class="fa-brands fa-instagram"></i></a></li>
-                    <li class="ms-3"><a title="facebook" class="text-muted" href="#"><i
-                                class="fa-brands fa-facebook"></i></a></li>
-                </ul>
+                <div class="total">
+                    <h1 class="cart-total">TOTAL</h1>
+                    <span class="total-price">$0</span>
+                    <button type="button" class="purchase-btn btn btn-success">PURCHASE</button>
+                </div>
             </div>
-        </footer>
-        <!-- END EDMO HTML (Happy Coding!)-->
+        </div>
+        <!-- cart modal end -->
+        <!-- footer -->
+        <div class="container">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Term of use</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                </ul>
+                <p class="text-center text-muted">© Tech Mart 2022</p>
+            </footer>
+        </div>
+        <!-- end footer -->
     </main>
-    <script src="../../../public/js/cart.js"></script>
 </body>
 
 </html>

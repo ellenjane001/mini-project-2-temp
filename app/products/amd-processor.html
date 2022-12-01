@@ -62,10 +62,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
                     </ul>
-                    <div class="cart-btn">
-                        <i id="cart" class="fas fa-shopping-cart"></i>
-                        <span class="cart-quantity">0</span>
-                    </div>
+                    <button type="button" class="cart-btn btn btn-link position-relative text-dark">
+                        <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-quantity">
+                            0
+                        </span>
+                    </button>
                     <a title="logout" href="javascript:void(0)" class="logout">
                         <i class="fa-solid fa-right-from-bracket fa-2xl"></i></a>
                 </div>
@@ -94,18 +97,6 @@
                 </ol>
             </nav>
         </div>
-        <!-- bootstrap toast -->
-        <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
-            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/null/external-information-travel-dreamstale-lineal-dreamstale.png"
-                        class="rounded me-auto" alt="icon">
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body text-center"> Logout Successful </div>
-            </div>
-        </div>
-        <!-- end bootstrap toast -->
         <div class="container">
             <div class="prod-type">
                 <h2>AMD PROCESSOR</h2>
@@ -114,103 +105,101 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-2">
-                    <aside>
-                        <h5 class="aside-p">SEARCH PRODUCT</h5>
-                        <hr class="line-red">
-                        <input type="text" name="Search" class="item-search" id="search" placeholder="Search...">
-                        <h5 class="aside-p-2">TOP RATED PRODUCTS</h5>
-                        <hr class="line-red">
-                    </aside>
-                </div>
-                <div class="col-10">
-                    <main class="cards">
-                        <article class="card">
-                            <a href="../products/processors/prod_AMD_Ryzen9.html">
-                                <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-                                <div class="text">
-                                    <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                                    <button class="btn btn-outline-primary">More Info</button>
-                                </div>
-                            </a>
-                        </article>
-                        <article class="card">
-                            <a href="../products/processors/prod_AMD_Ryzen7.html">
-                                <img src="../../public/img/AMD_RYZEN_7_7700X.png" alt="Sample photo">
-                                <div class="text">
-                                    <h3>AMD Ryzen™ 7 7700X Processor </h3>
-                                    <button class="btn btn-outline-primary">Here's how</button>
-                                </div>
-                            </a>
-                        </article>
-                        <article class="card">
+                <aside class="col-sm-3">
+                    <h5 class="aside-p">SEARCH PRODUCT</h5>
+                    <hr class="line-red">
+                    <input type="text" name="Search" class="item-search" id="search" placeholder="Search...">
+                    <h5 class="aside-p-2">TOP RATED PRODUCTS</h5>
+                    <hr class="line-red">
+                </aside>
+                <main class="col-sm-9 cards row text-center">
+                    <article class="card">
+                        <a href="../products/processors/prod_AMD_Ryzen9.html">
                             <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
                             <div class="text">
                                 <h3>AMD Ryzen™ 9 7900X Processor</h3>
                                 <button class="btn btn-outline-primary">More Info</button>
                             </div>
-                        </article>
-                        <article class="card">
-                            <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
+                        </a>
+                    </article>
+                    <article class="card">
+                        <a href="../products/processors/prod_AMD_Ryzen7.html">
+                            <img src="../../public/img/AMD_RYZEN_7_7700X.png" alt="Sample photo">
                             <div class="text">
-                                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                                <button class="btn btn-outline-primary">More Info</button>
+                                <h3>AMD Ryzen™ 7 7700X Processor </h3>
+                                <button class="btn btn-outline-primary">Here's how</button>
                             </div>
-                        </article>
-                        <article class="card">
-                            <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-                            <div class="text">
-                                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                                <button class="btn btn-outline-primary">More Info</button>
-                            </div>
-                        </article>
-                        <article class="card">
-                            <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-                            <div class="text">
-                                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                                <button class="btn btn-outline-primary">More Info</button>
-                            </div>
-                        </article>
-                        <article class="card">
-                            <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-                            <div class="text">
-                                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                                <button class="btn btn-outline-primary">More Info</button>
-                            </div>
-                        </article>
-                        <article class="card">
-                            <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
-                            <div class="text">
-                                <h3>AMD Ryzen™ 9 7900X Processor</h3>
-                                <button class="btn btn-outline-primary">More Info</button>
-                            </div>
-                        </article>
-                    </main>
-                </div>
+                        </a>
+                    </article>
+                    <article class="card">
+                        <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
+                        <div class="text">
+                            <h3>AMD Ryzen™ 9 7900X Processor</h3>
+                            <button class="btn btn-outline-primary">More Info</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
+                        <div class="text">
+                            <h3>AMD Ryzen™ 9 7900X Processor</h3>
+                            <button class="btn btn-outline-primary">More Info</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
+                        <div class="text">
+                            <h3>AMD Ryzen™ 9 7900X Processor</h3>
+                            <button class="btn btn-outline-primary">More Info</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
+                        <div class="text">
+                            <h3>AMD Ryzen™ 9 7900X Processor</h3>
+                            <button class="btn btn-outline-primary">More Info</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
+                        <div class="text">
+                            <h3>AMD Ryzen™ 9 7900X Processor</h3>
+                            <button class="btn btn-outline-primary">More Info</button>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <img src="../../public/img/AMD_RYZEN_9_7900X.png" alt="Sample photo">
+                        <div class="text">
+                            <h3>AMD Ryzen™ 9 7900X Processor</h3>
+                            <button class="btn btn-outline-primary">More Info</button>
+                        </div>
+                    </article>
+                </main>
             </div>
         </div>
     </main>
-
-
-    <!-- footer -->
-    <footer class=" footer mt-auto bg-dark">
-        <div class="row d-flex flex-wrap justify-content-between align-items-center py-3 mx-3">
-            <div class="col-md-4 d-flex align-items-center">
-                <span class="mb-3 mb-md-0 text-muted">© 2022 TechMart</span>
+    <!-- bootstrap toast -->
+    <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/null/external-information-travel-dreamstale-lineal-dreamstale.png"
+                    class="rounded me-auto" alt="icon">
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
-            <!-- socials -->
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a title="twitter" class="text-muted" href="#"><i class="fa-brands fa-twitter"></i></a>
-                </li>
-                <li class="ms-3"><a title="instagram" class="text-muted" href="#"><i
-                            class="fa-brands fa-instagram"></i></a>
-                </li>
-                <li class="ms-3"><a title="facebook" class="text-muted" href="#"><i
-                            class="fa-brands fa-facebook"></i></a>
-                </li>
-            </ul>
+            <div class="toast-body text-center"> Logout Successful </div>
         </div>
-    </footer>
+    </div>
+    <!-- end bootstrap toast -->
+    <!-- footer -->
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Term of use</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">© Tech Mart 2022</p>
+        </footer>
+    </div>
 </body>
 
 </html>
