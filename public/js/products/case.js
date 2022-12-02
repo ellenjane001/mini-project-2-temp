@@ -37,7 +37,8 @@ class Case {
             let img = document.createElement('img')
             img.src = data.image_link[i]
             img.loading = 'lazy'
-            img.classList.add('img-fluid')
+            img.classList.add('img')
+            img.classList.add('m-2')
             let col = document.createElement('div')
             col.classList.add('col')
             col.appendChild(img)
