@@ -30,9 +30,22 @@ html main h1[class="text-center"]~.row>.col-12>.row>.col-2 {
   justify-content: center;
 }
 
+.col>.row>.col {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width:600px) {
   div.container.text-center>.row {
     flex-direction: column;
+  }
+
+  html main .card-img-overlay {
+    top: 0;
+  }
+
+  html main .card-img-overlay>* {
+   font-size: small;
   }
 
   div.container.text-center>.row>* {
