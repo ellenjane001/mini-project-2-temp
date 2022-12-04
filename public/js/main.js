@@ -1,7 +1,6 @@
 const apiURL = 'https://fakestoreapi.com/'
 const firebaseAPI = 'https://techmart-96763-default-rtdb.asia-southeast1.firebasedatabase.app/'
 let login = localStorage.getItem('login')
-
 if (login === 'true') {
     document.querySelector('html body main .logout').style.display = 'inline-block'
     document.querySelector('.right-wrapper.btn-group').style.visibility = "hidden"
@@ -10,11 +9,9 @@ else {
     document.querySelector('.right-wrapper.btn-group').style.visibility = "visible"
     document.querySelector('html body main .logout').style.display = 'none'
 }
-
 // Bootstrap toast
 const toastTrigger = document.querySelector('html body main .logout')
 const toastLiveExample = document.getElementById('liveToast')
-
 if (toastTrigger) {
     toastTrigger.addEventListener('click', () => {
         const toast = new bootstrap.Toast(toastLiveExample)
@@ -34,9 +31,6 @@ if (toastTrigger) {
         }
     })
 }
-
-
-
 let App = {
     POST: async (url = '', data = {}) => {
         let requestFetch = async (url) => {
@@ -50,7 +44,6 @@ let App = {
                 body: JSON.stringify(data)
             })
         }
-
         return requestFetch(`${apiURL}${url}`)
     },
     GET: async (url = '') => {
@@ -64,11 +57,9 @@ let App = {
                 }
             })
         }
-
         return requestFetch(`${firebaseAPI}${url}`)
     }
 }
-
 let NavBarInitiator = {
     appendLI: (nav) => {
         let ul = document.querySelector('.navbar-nav.ms-auto.mb-2.mb-lg-0.text-uppercase')
@@ -85,7 +76,6 @@ let NavBarInitiator = {
         }
     }
 }
-
 let ProductObj = {
     generateCard: (text, image_link, data) => {
         let column = document.createElement('div')
@@ -114,4 +104,24 @@ let ProductObj = {
         column.appendChild(div)
         return column
     }
+}
+
+function numberToEnglish(n) {
+    let oneToTwenty = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ',
+        'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+    let tenth = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+    if (n.toString().length > 7) return myDiv.innerHTML = 'overlimit';
+    //let num = ('0000000000'+ numberInput).slice(-10).match(/^(\d{1})(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+    let num = ('0000000' + n).slice(-7).match(/^(\d{1})(\d{1})(\d{2})(\d{1})(\d{2})$/);
+    if (!num) return;
+
+    let outputText = num[1] != 0 ? (oneToTwenty[Number(num[1])] || `${tenth[num[1][0]]} ${oneToTwenty[num[1][1]]}`) + ' million ' : '';
+
+    outputText += num[2] != 0 ? (oneToTwenty[Number(num[2])] || `${tenth[num[2][0]]} ${oneToTwenty[num[2][1]]}`) + 'hundred ' : '';
+    outputText += num[3] != 0 ? (oneToTwenty[Number(num[3])] || `${tenth[num[3][0]]} ${oneToTwenty[num[3][1]]}`) + ' thousand ' : '';
+    outputText += num[4] != 0 ? (oneToTwenty[Number(num[4])] || `${tenth[num[4][0]]} ${oneToTwenty[num[4][1]]}`) + 'hundred ' : '';
+    outputText += num[5] != 0 ? (oneToTwenty[Number(num[5])] || `${tenth[num[5][0]]} ${oneToTwenty[num[5][1]]} `) : '';
+
+    return outputText
 }
