@@ -34,15 +34,27 @@ class Products {
 
         let accBody = document.createElement('div')
         let ul = document.createElement('ul')
-        let li = document.createElement('li')
-        accBody.appendChild(document.createTextNode('test'))
+        ul.classList.add('list-unstyled')
+        if (data.brands.length > 0) {
+            for (let b = 0; b < data.brands.length; b++) {
+                let li = document.createElement('li')
+                let a = document.createElement('a')
+                a.href = "javascript:void(0)"
+                console.log(data.brands[b].toUpperCase())
+                a.appendChild(document.createTextNode(data.brands[b].toUpperCase()))
+                li.appendChild(a)
+                ul.appendChild(li)
+            }
+            accBody.appendChild(ul)
+        }
+        else
+            accBody.appendChild(document.createTextNode('test'))
+
         accBody.classList.add('accordion-body')
 
         acc.appendChild(accBody)
-
-
         // button text
-        button.appendChild(document.createTextNode(data.toUpperCase()))
+        button.appendChild(document.createTextNode(data.name.toUpperCase()))
 
         h2.appendChild(button)
         accordItem.appendChild(h2)
@@ -51,19 +63,19 @@ class Products {
     }
 }
 let categories = [
-    { name: 'case' },
-    { name: 'cooling' },
-    { name: 'display device' },
-    { name: 'gpu' },
-    { name: 'input device' },
-    { name: 'mother board' },
-    { name: 'operating system' },
-    { name: 'processor' },
-    { name: 'power supply unit' },
-    { name: 'ram' },
-    { name: 'storage device' },
-    { name: 'others' }
+    { name: 'case', brands: ['amd'] },
+    { name: 'cooling', brands: [] },
+    { name: 'display device', brands: [] },
+    { name: 'gpu', brands: [] },
+    { name: 'input device', brands: [] },
+    { name: 'mother board', brands: [] },
+    { name: 'operating system', brands: [] },
+    { name: 'processor', brands: [] },
+    { name: 'power supply unit', brands: [] },
+    { name: 'ram', brands: [] },
+    { name: 'storage device', brands: [] },
+    { name: 'others', brands: [] }
 ]
 for (let i = 0; i < categories.length; i++) {
-    document.getElementById('accord-categories').appendChild(new Products().appendAccordion(categories[i].name, i))
+    document.getElementById('accord-categories').appendChild(new Products().appendAccordion(categories[i], i))
 }
