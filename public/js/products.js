@@ -60,26 +60,24 @@ class Products {
     loadProduct = (e) => {
         let category = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstChild.firstChild.innerText.toLowerCase()
         let label = document.getElementById('ctgry')
-        new Case().cls()
-
+        this.cls()
         switch (category) {
             case 'case':
-                new Case().fetchAll()
-                break
             case 'cooling':
-                new Cooling().fetchAll()
-                break
             case 'display device':
-                new Display().fetchAll()
+            case 'gpu':
+            case 'input device':
+                this.fetchAll(category.split(' ')[0])
+                break;
+            case 'mother board':
+                this.fetchAll('mb')
                 break;
         }
         label.innerText = category
     }
-}
-class Case {
-    fetchAll = async () => {
+    fetchAll = async (obj) => {
         // get all products from firebase API
-        let response = await App.GET('case.json').then(response => response.json())
+        let response = await App.GET(`${obj}.json`).then(response => response.json())
         Object.keys(response).forEach(e => {
             CONTAINER.appendChild(ProductObj.generateCard(response[e].name, response[e].image_link[0], response[e]))
         })
@@ -117,6 +115,11 @@ class Case {
         }
         return row
     }
+    generateRow = () => {
+        let row = document.createElement('div')
+        row.classList.add('row')
+        return row
+    }
     generateDiv = (data) => {
         let row = this.generateRow()
         row.classList.add('row-cols-2')
@@ -131,68 +134,38 @@ class Case {
         row.appendChild(col2)
         return row
     }
-    generateRow = () => {
-        let row = document.createElement('div')
-        row.classList.add('row')
-        return row
+    return = (e) => {
+        let category = e.target.parentElement.parentElement.firstChild.nextSibling.innerText
+        this.cls()
+        switch (category) {
+            case 'case':
+            case 'cooling':
+            case 'display device':
+            case 'gpu':
+            case 'input device':
+                this.fetchAll(category.split(' ')[0])
+                break;
+            case 'mother board':
+                this.fetchAll(category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0))
+                break;
+        }
     }
     cls = () => {
         CONTAINER.innerHTML = ''
     }
-    return = (e) => {
-        let category = e.target.parentElement.parentElement.firstChild.nextSibling.innerText
-        this.cls()
-
-        switch (category) {
-            case 'case':
-                new Case().fetchAll()
-                break
-            case 'cooling':
-                new Cooling().fetchAll()
-                break
-            case 'display device':
-                new Display().fetchAll()
-                break;
-        }
-        // CONTAINER.appendChild(this.generateRow())
-
-    }
 }
-class Cooling {
-    fetchAll = async () => {
-        // get all products from firebaseAPI
-        let response = await App.GET('cooling.json').then(res => res.json())
-        Object.keys(response).forEach(e => {
-            CONTAINER.appendChild(ProductObj.generateCard(response[e].name, response[e].image_link[0], response[e]))
-        })
-        new Case().loadValue()
-    }
-}
-class Display {
-    fetchAll = async () => {
-        // get all products from firebaseAPI
-        let response = await App.GET('display.json').then(res => res.json())
-        Object.keys(response).forEach(e => {
-            CONTAINER.appendChild(ProductObj.generateCard(response[e].name, response[e].image_link[0], response[e]))
-        })
-        new Case().loadValue()
-    }
-}
-
 
 let categories = [
-    { name: 'case', brands: ['all'] },
-    { name: 'cooling', brands: ['all'] },
+    { name: 'case', brands: ['all', 'ROG'] },
+    { name: 'cooling', brands: ['all', 'ROG'] },
     { name: 'display device', brands: ['all'] },
-    { name: 'gpu', brands: [] },
-    { name: 'input device', brands: [] },
-    { name: 'mother board', brands: [] },
-    { name: 'operating system', brands: [] },
+    { name: 'gpu', brands: ['all'] },
+    { name: 'input device', brands: ['all'] },
+    { name: 'mother board', brands: ['all'] },
     { name: 'processor', brands: [] },
     { name: 'power supply unit', brands: [] },
     { name: 'ram', brands: [] },
-    { name: 'storage device', brands: [] },
-    { name: 'others', brands: [] }
+    { name: 'storage device', brands: [] }
 ]
 for (let i = 0; i < categories.length; i++) {
     document.getElementById('accord-categories').appendChild(new Products().appendAccordion(categories[i], i))
