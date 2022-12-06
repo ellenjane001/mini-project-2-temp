@@ -79,21 +79,18 @@ class Products {
         label.innerText = category
     }
     fetchSwitch = (category) => {
-        switch (category) {
-            case 'case':
-            case 'cooling':
-            case 'display device':
-            case 'gpu':
-            case 'input device':
-            case 'processor':
-            case 'ram':
-                this.fetchAll(category.split(' ')[0])
-                break;
-            case 'mother board':
-            case 'power supply unit':
-            case 'storage device':
-                this.fetchAll(category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0))
-                break;
+        // category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0) --- this function gets the first letter of splitted string
+
+        // array of categories with more than one word
+        let categoriesWithMoreThanOneWord = categories.filter(e => e.name.split(' ').length > 1).map(a => a.name)
+        // array of categories with one word
+        let oneWordCategories = categories.filter(e => e.name.split(' ').length = 1).map(a => a.name)
+
+
+        if (categoriesWithMoreThanOneWord.includes(category)) {
+            this.fetchAll(category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0))
+        } else if (oneWordCategories.includes(category)) {
+            this.fetchAll(category)
         }
     }
     fetchAll = async (obj) => {
@@ -103,6 +100,13 @@ class Products {
             CONTAINER.appendChild(ProductObj.generateCard(response[e].name, response[e].image_link[0], response[e]))
         })
         this.loadValue()
+    }
+    fetchProducts = (category) => {
+        this.fetchSwitch(category)
+    }
+    returnArray = (category) => {
+        let condition1 = categories.filter(e => e.name.split(' ').length > 1).map(a => a.name)
+        let condition2 = categories.filter(e => e.name.split(' ').length = 1).map(a => a.name)
     }
     loadValue = () => {
         document.querySelectorAll('.btn.btn-primary').forEach(e => {
@@ -143,7 +147,7 @@ class Products {
     }
     generateDiv = (data) => {
         let row = this.generateRow()
-        // row.classList.add('row-cols-2')
+        row.classList.add('row-cols-2')
         let col = document.createElement('div')
         col.classList.add('col')
         let img = document.createElement('img')
@@ -169,9 +173,9 @@ class Products {
 let categories = [
     { name: 'case', brands: ['all', 'ROG'] },
     { name: 'cooling', brands: ['all', 'ROG'] },
-    { name: 'display device', brands: ['all'] },
+    { name: 'display', brands: ['all'] },
     { name: 'gpu', brands: ['all'] },
-    { name: 'input device', brands: ['all'] },
+    { name: 'input', brands: ['all'] },
     { name: 'mother board', brands: ['all'] },
     { name: 'processor', brands: ['all'] },
     { name: 'power supply unit', brands: ['all'] },
@@ -180,4 +184,9 @@ let categories = [
 ]
 for (let i = 0; i < categories.length; i++) {
     document.getElementById('accord-categories').appendChild(new Products().appendAccordion(categories[i], i))
+    new Products().fetchProducts(categories[i].name)
+
 }
+new Products().returnArray()
+document.getElementById('ctgry').innerText = 'All Products'
+
