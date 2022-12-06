@@ -54,7 +54,9 @@ let App = {
                 body: JSON.stringify(data)
             })
         }
-        return requestFetch(`${apiURL}${url}`)
+        const req = await requestFetch(`${apiURL}${url}`)
+        const json = await req.json()
+        return json
     },
     // GET all data in API
     GET: async (url = '') => {
@@ -68,11 +70,13 @@ let App = {
                 }
             })
         }
-        return requestFetch(`${firebaseAPI}${url}`)
+        const req = await requestFetch(`${firebaseAPI}${url}`)
+        const json = await req.json()
+        return json
     }
 }
 
-// Initiate navbar
+// Initiate navbar li
 let NavBarInitiator = {
     appendLI: (nav) => {
         let ul = document.querySelector('.navbar-nav.ms-auto.mb-2.mb-lg-0.text-uppercase')
@@ -94,8 +98,10 @@ let ProductObj = {
     // generate card for products page
     generateCard: (text, image_link, data) => {
         let column = document.createElement('div')
-        column.classList.add('col')
-        column.classList.add('m-2')
+        let columnClasses = ['col', 'm-2']
+        for (let a = 0; a < columnClasses.length; a++) {
+            column.classList.add(columnClasses[a])
+        }
         let div = document.createElement('div')
         div.classList.add('card')
         let image = document.createElement('img')
@@ -110,8 +116,10 @@ let ProductObj = {
         let btn = document.createElement('button')
         btn.appendChild(document.createTextNode('View'))
         btn.setAttribute('data-value', `${JSON.stringify(data)}`)
-        btn.classList.add('btn')
-        btn.classList.add('btn-primary')
+        let btnClasses = ['btn', 'btn-primary']
+        for (let b = 0; b < btnClasses.length; b++) {
+            btn.classList.add(btnClasses[b])
+        }
         body.appendChild(h5)
         body.appendChild(btn)
         div.appendChild(image)
@@ -121,7 +129,7 @@ let ProductObj = {
     }
 }
 
-// convert number to english word - this is need for accordions in products page
+// convert number to english word - this is needed for accordions in products page
 function numberToEnglish(n) {
     let oneToTwenty = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ',
         'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];

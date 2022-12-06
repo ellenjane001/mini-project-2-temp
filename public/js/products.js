@@ -11,6 +11,9 @@ document.getElementById('products').classList.add('active')
 // products container
 const CONTAINER = document.querySelector('.col-10>h1+.row')
 class Products {
+    constructor() {
+        this.products = []
+    }
     appendAccordion = (data, i) => {
         let accordItem = document.createElement('div')
         let h2 = document.createElement('h2')
@@ -84,29 +87,50 @@ class Products {
         // array of categories with more than one word
         let categoriesWithMoreThanOneWord = categories.filter(e => e.name.split(' ').length > 1).map(a => a.name)
         // array of categories with one word
-        let oneWordCategories = categories.filter(e => e.name.split(' ').length = 1).map(a => a.name)
-
+        let oneWordCategories = categories.filter(e => e.name.split(' ').length == 1).map(a => a.name)
 
         if (categoriesWithMoreThanOneWord.includes(category)) {
-            this.fetchAll(category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0))
+            this.fetchPerCategory(category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0))
         } else if (oneWordCategories.includes(category)) {
-            this.fetchAll(category)
+            this.fetchPerCategory(category)
         }
     }
-    fetchAll = async (obj) => {
+    fetchPerCategory = async (obj) => {
         // get all products from firebase API
-        let response = await App.GET(`${obj}.json`).then(response => response.json())
+        let response = await App.GET(`${obj}.json`)
         Object.keys(response).forEach(e => {
             CONTAINER.appendChild(ProductObj.generateCard(response[e].name, response[e].image_link[0], response[e]))
         })
         this.loadValue()
     }
-    fetchProducts = (category) => {
-        this.fetchSwitch(category)
-    }
-    returnArray = (category) => {
+    returnElements = async () => {
         let condition1 = categories.filter(e => e.name.split(' ').length > 1).map(a => a.name)
-        let condition2 = categories.filter(e => e.name.split(' ').length = 1).map(a => a.name)
+        let condition2 = categories.filter(e => e.name.split(' ').length == 1).map(a => a.name)
+        let response
+        let p = []
+        for (let c = 0; c < condition1.length; c++) {
+            response = await App.GET(`${condition1[c].split(' ')[0].charAt(0) + condition1[c].split(' ')[1].charAt(0)}.json`)
+            for (let e = 0; e < Object.keys(response).length; e++) {
+                p.push(ProductObj.generateCard(response[Object.keys(response)[e]].name, response[Object.keys(response)[e]].image_link[0], response[Object.keys(response)[e]]))
+
+            }
+
+        }
+        for (let d = 0; d < condition2.length; d++) {
+            response = await App.GET(`${condition2[d]}.json`)
+            for (let e = 0; e < Object.keys(response).length; e++) {
+                p.push(ProductObj.generateCard(response[Object.keys(response)[e]].name, response[Object.keys(response)[e]].image_link[0], response[Object.keys(response)[e]]))
+            }
+        }
+        return p
+    }
+    manipulateDOM(start, end) {
+        this.returnElements().then(response => {
+            for (let h = start; h < end; h++) {
+                CONTAINER.appendChild(response[h])
+            }
+            this.loadValue()
+        })
     }
     loadValue = () => {
         document.querySelectorAll('.btn.btn-primary').forEach(e => {
@@ -162,13 +186,31 @@ class Products {
     return = (e) => {
         let category = e.target.parentElement.parentElement.firstChild.nextSibling.innerText
         this.cls()
+        if (category == 'All Products') {
+            let start = 0
+            let end = 10
+            this.manipulateDOM(start, end)
+        }
         this.fetchSwitch(category)
     }
     cls = () => {
         CONTAINER.innerHTML = ''
     }
+    generateButton = () => {
+        let btn = document.createElement('button')
+        btn.appendChild(document.createTextNode('Next'))
+        btn.setAttribute('data-start', 10)
+        btn.setAttribute('data-end', 20)
+        btn.addEventListener('click', this.changePage)
+        return btn
+    }
+    changePage = (e) => {
+        console.log(e.target.getAttribute('data-start'))
+        this.cls()
+        prod.manipulateDOM(parseInt(e.target.getAttribute('data-start')), parseInt(e.target.getAttribute('data-end')))
+    }
 }
-
+let prod = new Products()
 // categories object
 let categories = [
     { name: 'case', brands: ['all', 'ROG'] },
@@ -183,10 +225,14 @@ let categories = [
     { name: 'storage device', brands: ['all'] }
 ]
 for (let i = 0; i < categories.length; i++) {
-    document.getElementById('accord-categories').appendChild(new Products().appendAccordion(categories[i], i))
-    new Products().fetchProducts(categories[i].name)
-
+    document.getElementById('accord-categories').appendChild(prod.appendAccordion(categories[i], i))
 }
-new Products().returnArray()
 document.getElementById('ctgry').innerText = 'All Products'
+let start = 0
+let end = 10
+prod.manipulateDOM(start, end)
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
+insertAfter(CONTAINER, prod.generateButton())
