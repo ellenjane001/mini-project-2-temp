@@ -3,8 +3,12 @@ let nav = [
     { Title: 'Brands', Location: './brands.html' },
     { Title: 'Products', Location: './products.html' },
 ]
+// pass nav object to navBarObject to append Links to Navigation initiator
 NavBarInitiator.appendLI(nav)
+// add ACTIVE class to current page
 document.getElementById('products').classList.add('active')
+
+// products container
 const CONTAINER = document.querySelector('.col-10>h1+.row')
 class Products {
     appendAccordion = (data, i) => {
@@ -14,15 +18,19 @@ class Products {
         h2.id = `flush-heading${this.number(i + 1)}`
         accordItem.classList.add('accordion-item')
         let button = document.createElement('button')
+        // append classes to accordion button
         button.classList.add('accordion-button')
         button.classList.add('collapsed')
         button.type = 'button'
+        // append attributes to accordion button
         button.setAttribute('data-bs-toggle', 'collapse')
         button.setAttribute('aria-expanded', 'false')
         button.setAttribute('aria-controls', `flush-collapse${this.number(i + 1)}`)
         button.setAttribute('data-bs-target', `#flush-collapse${this.number(i + 1)}`)
+        // create accordion body wrapper
         let acc = document.createElement('div')
         acc.id = `flush-collapse${this.number(i + 1)}`
+        // add classes to accordion div inside accordion
         acc.classList.add('accordion-collapse')
         acc.classList.add('collapse')
         acc.setAttribute('aria-labelledby', `flush-headinge${this.number(i + 1)}`)
@@ -30,6 +38,7 @@ class Products {
         let accBody = document.createElement('div')
         let ul = document.createElement('ul')
         ul.classList.add('list-unstyled')
+
         if (data.brands.length > 0) {
             for (let b = 0; b < data.brands.length; b++) {
                 let li = document.createElement('li')
@@ -45,11 +54,15 @@ class Products {
         }
         else
             accBody.appendChild(document.createTextNode('test'))
+
         accBody.classList.add('accordion-body')
+        // append body to accordion
         acc.appendChild(accBody)
         // button text
         button.appendChild(document.createTextNode(data.name.toUpperCase()))
+        // append button to h2
         h2.appendChild(button)
+
         accordItem.appendChild(h2)
         accordItem.appendChild(acc)
         return accordItem
@@ -59,21 +72,29 @@ class Products {
     }
     loadProduct = (e) => {
         let category = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstChild.firstChild.innerText.toLowerCase()
+        // get H1 element to apped the category name
         let label = document.getElementById('ctgry')
         this.cls()
+        this.fetchSwitch(category)
+        label.innerText = category
+    }
+    fetchSwitch = (category) => {
         switch (category) {
             case 'case':
             case 'cooling':
             case 'display device':
             case 'gpu':
             case 'input device':
+            case 'processor':
+            case 'ram':
                 this.fetchAll(category.split(' ')[0])
                 break;
             case 'mother board':
-                this.fetchAll('mb')
+            case 'power supply unit':
+            case 'storage device':
+                this.fetchAll(category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0))
                 break;
         }
-        label.innerText = category
     }
     fetchAll = async (obj) => {
         // get all products from firebase API
@@ -122,7 +143,7 @@ class Products {
     }
     generateDiv = (data) => {
         let row = this.generateRow()
-        row.classList.add('row-cols-2')
+        // row.classList.add('row-cols-2')
         let col = document.createElement('div')
         col.classList.add('col')
         let img = document.createElement('img')
@@ -137,24 +158,14 @@ class Products {
     return = (e) => {
         let category = e.target.parentElement.parentElement.firstChild.nextSibling.innerText
         this.cls()
-        switch (category) {
-            case 'case':
-            case 'cooling':
-            case 'display device':
-            case 'gpu':
-            case 'input device':
-                this.fetchAll(category.split(' ')[0])
-                break;
-            case 'mother board':
-                this.fetchAll(category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0))
-                break;
-        }
+        this.fetchSwitch(category)
     }
     cls = () => {
         CONTAINER.innerHTML = ''
     }
 }
 
+// categories object
 let categories = [
     { name: 'case', brands: ['all', 'ROG'] },
     { name: 'cooling', brands: ['all', 'ROG'] },
@@ -162,10 +173,10 @@ let categories = [
     { name: 'gpu', brands: ['all'] },
     { name: 'input device', brands: ['all'] },
     { name: 'mother board', brands: ['all'] },
-    { name: 'processor', brands: [] },
-    { name: 'power supply unit', brands: [] },
-    { name: 'ram', brands: [] },
-    { name: 'storage device', brands: [] }
+    { name: 'processor', brands: ['all'] },
+    { name: 'power supply unit', brands: ['all'] },
+    { name: 'ram', brands: ['all'] },
+    { name: 'storage device', brands: ['all'] }
 ]
 for (let i = 0; i < categories.length; i++) {
     document.getElementById('accord-categories').appendChild(new Products().appendAccordion(categories[i], i))
