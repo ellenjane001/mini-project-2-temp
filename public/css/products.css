@@ -192,9 +192,3 @@ section {
 
     background-color: #1158a8;
 }
-
-@media (max-width: 991px) {
-    .container {
-        flex-direction: column;
-    }
-}

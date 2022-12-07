@@ -13,6 +13,9 @@ const CONTAINER = document.querySelector('.col-10>h1+.row')
 class Products {
     constructor() {
         this.products = []
+        this.start = 0
+        this.end = 10
+        this.page = 1
     }
     appendAccordion = (data, i) => {
         let accordItem = document.createElement('div')
@@ -112,10 +115,9 @@ class Products {
             response = await App.GET(`${condition1[c].split(' ')[0].charAt(0) + condition1[c].split(' ')[1].charAt(0)}.json`)
             for (let e = 0; e < Object.keys(response).length; e++) {
                 p.push(ProductObj.generateCard(response[Object.keys(response)[e]].name, response[Object.keys(response)[e]].image_link[0], response[Object.keys(response)[e]]))
-
             }
-
         }
+
         for (let d = 0; d < condition2.length; d++) {
             response = await App.GET(`${condition2[d]}.json`)
             for (let e = 0; e < Object.keys(response).length; e++) {
@@ -124,15 +126,19 @@ class Products {
         }
         return p
     }
-    manipulateDOM(start, end) {
+    manipulateDOM(a, b, c) {
         this.returnElements().then(response => {
-            for (let h = start; h < end; h++) {
+            if (CONTAINER.parentElement.children.length > 2)
+                CONTAINER.parentElement.children[2].remove()
+            for (let h = a; h < b; h++) {
                 CONTAINER.appendChild(response[h])
             }
+            this.insertAfter(CONTAINER, prod.generatePagination(c))
             this.loadValue()
         })
     }
     loadValue = () => {
+        // back button
         document.querySelectorAll('.btn.btn-primary').forEach(e => {
             e.addEventListener('click', () => {
                 CONTAINER.innerHTML = ''
@@ -143,25 +149,30 @@ class Products {
                 btn.addEventListener('click', this.return)
                 CONTAINER.appendChild(btn)
                 CONTAINER.appendChild(this.generateProduct(JSON.parse(e.getAttribute('data-value'))))
-                CONTAINER.appendChild(this.generateDiv(JSON.parse(e.getAttribute('data-value'))))
+                CONTAINER.appendChild(this.generateDiv())
             })
         })
     }
     generateProduct = (data) => {
         let row = this.generateRow()
-        row.classList.add(`row-cols-${data.image_link.length}`)
         // append image based on length
-        for (let i = 0; i < data.image_link.length; i++) {
-            let img = document.createElement('img')
-            img.src = data.image_link[i]
-            img.loading = 'lazy'
-            img.classList.add('img')
-            img.classList.add('m-2')
-            let col = document.createElement('div')
-            col.classList.add('col')
-            col.appendChild(img)
-            row.appendChild(col)
-        }
+        let img = document.createElement('img')
+        img.src = data.image_link[0]
+        let count = 0
+        img.addEventListener('click', () => {
+            console.log(count)
+            console.log(data.image_link[count++])
+            if (count < data.image_link.length)
+                img.src = data.image_link[count]
+            else
+                count = 0
+        })
+        img.style.height = 'fit-content'
+        img.style.width = '400px'
+        img.classList.add('border')
+        img.classList.add('rounded')
+        row.appendChild(img)
+
         return row
     }
     generateRow = () => {
@@ -174,40 +185,64 @@ class Products {
         row.classList.add('row-cols-2')
         let col = document.createElement('div')
         col.classList.add('col')
-        let img = document.createElement('img')
-        img.src = data.image_link[data.image_link.length - data.image_link.length]
-        col.appendChild(img)
-        let col2 = document.createElement('div')
-        col2.classList.add('col')
         row.appendChild(col)
-        row.appendChild(col2)
         return row
     }
     return = (e) => {
         let category = e.target.parentElement.parentElement.firstChild.nextSibling.innerText
         this.cls()
         if (category == 'All Products') {
-            let start = 0
-            let end = 10
-            this.manipulateDOM(start, end)
+            this.manipulateDOM(this.page)
         }
         this.fetchSwitch(category)
     }
     cls = () => {
         CONTAINER.innerHTML = ''
     }
-    generateButton = () => {
-        let btn = document.createElement('button')
-        btn.appendChild(document.createTextNode('Next'))
-        btn.setAttribute('data-start', 10)
-        btn.setAttribute('data-end', 20)
-        btn.addEventListener('click', this.changePage)
-        return btn
+    generatePagination = (active) => {
+        let li_ = []
+        let nav = document.createElement('nav')
+        nav.setAttribute('aria-label', 'Page navigation example')
+        nav.id = 'pagination'
+        let ul = document.createElement('ul')
+        ul.classList.add('pagination')
+        ul.classList.add('justify-content-end')
+        let values = [
+            { inner: 1, start: 0, end: 10, active: true },
+            { inner: 2, start: 10, end: 20, active: false },
+            { inner: 3, start: 20, end: 30, active: false },
+            { inner: 4, start: 30, end: 40, active: false },
+            { inner: 5, start: 40, end: 50, active: false }]
+
+        values.forEach(c => c.inner == active ? c.active = true : c.active = false)
+        for (let b = 0; b < values.length; b++) {
+            let li = document.createElement('li')
+            li.classList.add('page-item')
+            let a = document.createElement('a')
+            a.href = '#'
+            a.setAttribute('data-start', values[b].start)
+            a.setAttribute('data-end', values[b].end)
+            if (values[b].active) {
+                a.classList.add('active')
+            }
+            a.onclick = this.changePage
+            a.classList.add('page-link')
+            a.appendChild(document.createTextNode(values[b].inner))
+            li.appendChild(a)
+            li_.push(li)
+        }
+        li_.forEach(d => {
+            ul.appendChild(d)
+        })
+        nav.appendChild(ul)
+        return nav
     }
     changePage = (e) => {
-        console.log(e.target.getAttribute('data-start'))
         this.cls()
-        prod.manipulateDOM(parseInt(e.target.getAttribute('data-start')), parseInt(e.target.getAttribute('data-end')))
+        prod.manipulateDOM(parseInt(e.target.getAttribute('data-start')), parseInt(e.target.getAttribute('data-end')), e.target.innerText)
+    }
+    insertAfter = (referenceNode, newNode) => {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
 }
 let prod = new Products()
@@ -228,11 +263,8 @@ for (let i = 0; i < categories.length; i++) {
     document.getElementById('accord-categories').appendChild(prod.appendAccordion(categories[i], i))
 }
 document.getElementById('ctgry').innerText = 'All Products'
-let start = 0
-let end = 10
-prod.manipulateDOM(start, end)
-function insertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
 
-insertAfter(CONTAINER, prod.generateButton())
+prod.manipulateDOM(0, 10, 1)
+
+
+
