@@ -4,3 +4,6 @@ let nav = [
     { Title: 'Products', Location: './products.html' },
 ]
 NavBarInitiator.appendLI(nav)
+class SignUp{
+
+}
