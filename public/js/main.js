@@ -47,14 +47,14 @@ let App = {
             console.log('** beforeSend request fetch **');
             return await fetch(url, {
                 method: 'POST',
-                mode: 'cors',
+                // mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             })
         }
-        const req = await requestFetch(`${apiURL}${url}`)
+        const req = await requestFetch(`${firebaseAPI}${url}`)
         const json = await req.json()
         return json
     },

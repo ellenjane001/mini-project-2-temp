@@ -11,12 +11,7 @@ document.getElementById('products').classList.add('active')
 // products container
 const CONTAINER = document.querySelector('.col-10>h1+.row')
 class Products {
-    constructor() {
-        this.products = []
-        this.start = 0
-        this.end = 10
-        this.page = 1
-    }
+    // accordion for generating categories
     appendAccordion = (data, i) => {
         let accordItem = document.createElement('div')
         let h2 = document.createElement('h2')
@@ -46,6 +41,7 @@ class Products {
         ul.classList.add('list-unstyled')
 
         if (data.brands.length > 0) {
+            // looping through all brands inside a category
             for (let b = 0; b < data.brands.length; b++) {
                 let li = document.createElement('li')
                 let a = document.createElement('a')
@@ -58,9 +54,6 @@ class Products {
             }
             accBody.appendChild(ul)
         }
-        else
-            accBody.appendChild(document.createTextNode('test'))
-
         accBody.classList.add('accordion-body')
         // append body to accordion
         acc.appendChild(accBody)
@@ -73,9 +66,11 @@ class Products {
         accordItem.appendChild(acc)
         return accordItem
     }
+    // return number in english format
     number = (n) => {
         return numberToEnglish(n).charAt(0).toUpperCase() + numberToEnglish(n).slice(1).trim()
     }
+    // load products per category - upon clicking the accordion body
     loadProduct = (e) => {
         let category = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstChild.firstChild.innerText.toLowerCase()
         // get H1 element to apped the category name
@@ -87,9 +82,9 @@ class Products {
     fetchSwitch = (category) => {
         // category.split(' ')[0].charAt(0) + category.split(' ')[1].charAt(0) --- this function gets the first letter of splitted string
 
-        // array of categories with more than one word
+        // filter categories and return array of categories with more than one word
         let categoriesWithMoreThanOneWord = categories.filter(e => e.name.split(' ').length > 1).map(a => a.name)
-        // array of categories with one word
+        // filter categories and return array of categories with one word
         let oneWordCategories = categories.filter(e => e.name.split(' ').length == 1).map(a => a.name)
 
         if (categoriesWithMoreThanOneWord.includes(category)) {
@@ -147,6 +142,7 @@ class Products {
                 btn.classList.add('btn')
                 btn.classList.add('btn-primary')
                 btn.addEventListener('click', this.return)
+                // append button to container
                 CONTAINER.appendChild(btn)
                 CONTAINER.appendChild(this.generateProduct(JSON.parse(e.getAttribute('data-value'))))
                 CONTAINER.appendChild(this.generateDiv())
@@ -171,8 +167,8 @@ class Products {
         img.style.width = '400px'
         img.classList.add('border')
         img.classList.add('rounded')
+        // append image to row
         row.appendChild(img)
-
         return row
     }
     generateRow = () => {
@@ -192,7 +188,7 @@ class Products {
         let category = e.target.parentElement.parentElement.firstChild.nextSibling.innerText
         this.cls()
         if (category == 'All Products') {
-            this.manipulateDOM(this.page)
+            this.manipulateDOM(0, 10, 1)
         }
         this.fetchSwitch(category)
     }
