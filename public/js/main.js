@@ -61,7 +61,6 @@ let App = {
     // GET all data in API
     GET: async (url = '') => {
         let requestFetch = async (url) => {
-            console.log('** beforeSend request fetch **');
             return await fetch(url, {
                 method: 'GET',
                 mode: 'cors',
@@ -104,9 +103,11 @@ let ProductObj = {
         }
         let div = document.createElement('div')
         div.classList.add('card')
+        div.classList.add('border')
+        div.classList.add('h-100')
         let image = document.createElement('img')
         image.classList.add('card-img-top')
-        image.classList.add('img-fluid')
+        image.classList.add('img')
         image.src = image_link
         let body = document.createElement('div')
         body.classList.add('card-body')
@@ -125,6 +126,7 @@ let ProductObj = {
         div.appendChild(image)
         div.appendChild(body)
         column.appendChild(div)
+
         return column
     }
 }

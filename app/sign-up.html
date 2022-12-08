@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +40,6 @@
     </script>
     <!--End of Tawk.to Script-->
 </head>
-
 <body>
     <main>
         <!-- navigation -->
@@ -80,7 +78,6 @@
                 <a title="fb-link" href="#" class="fb"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
                 <span>Questions? Call: 123-4567 / 891-0111</span>
             </div>
-
             <div class="right-wrapper btn-group">
                 <!-- Login Button -->
                 <a href="./login.html" class="btn btn-dark btn-sm">Login</a>
@@ -89,16 +86,28 @@
             </div>
         </div>
         <!-- template stops here -->
-        <div class="container text-center">
+        <div class="container">
             <div class="row border rounded m-3">
                 <div class="col-6 rounded-1 p-4 mt-auto m-auto">
-                    <h1>Register</h1>
+                    <h1 class="text-center">Register</h1>
                     <form class="p-2 d-flex flex-column gap-2" id="login-form">
+                        <!-- fullname -->
+                        <label for="fullname">Fullname</label>
+                        <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full name">
+                        <!-- email -->
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="email@domain.com">
                         <!-- username -->
+                        <label for="username">Username</label>
                         <input type="text" id="username" name="username" class="form-control" placeholder="User name">
                         <!-- password -->
-                        <input type="password" id="password" name="password" class="form-control"
-                            placeholder="Password">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                            autocomplete="new-password">
+                        <!-- confirm password -->
+                        <label for="confirm_password">Confirm password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-control"
+                            placeholder="Confirm Password" autocomplete="new-password">
                         <p class="text-muted small px-3">
                             Creating an account means you're okay with our <a href="#">Terms of Service</a> and our <a
                                 href="#">Privacy Policy</a>
@@ -106,15 +115,12 @@
                         <button type="submit" class="btn btn-primary">Create account</button>
                         <p>Have an account? <a href="./login.html" class="link">Log in</a> </p>
                     </form>
-
                     <ul class="list-unstyled text-start m-auto w-75 border border-primary rounded ps-3 py-2 mb-5">
                         <li><i class="fa-solid fa-check text-success"></i> Free shipping upon signing up</li>
                         <li><i class="fa-solid fa-check text-success"></i> Exclusive Discounts</li>
                         <li><i class="fa-solid fa-check text-success"></i> Shopback and Rewards</li>
                     </ul>
-
                 </div>
-
             </div>
         </div>
         <!-- bootstrap toast -->
@@ -143,5 +149,4 @@
         </footer>
     </div>
 </body>
-
 </html>
