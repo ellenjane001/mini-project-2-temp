@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Mart - Customer Sign-up</title>
     <!-- favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./public/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./public/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./public/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./public/assets/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../public/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../public/assets/favicon/site.webmanifest">
     <!-- custom CSS -->
     <link rel="stylesheet" href="../public/css/styles.css">
     <link rel="stylesheet" href="../public/css/sign-up.css">
@@ -94,21 +94,36 @@
                         <!-- fullname -->
                         <label for="fullname">Fullname</label>
                         <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full name">
+                        <div class="invalid-feedback" required>
+                            Please enter your full name
+                        </div>
                         <!-- email -->
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control" placeholder="email@domain.com">
+                        <div class="invalid-feedback" required>
+                            Please enter a valid email
+                        </div>
                         <!-- username -->
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" class="form-control" placeholder="User name"
-                            autocomplete="username">
+                            autocomplete="username" required>
+                        <div class="invalid-feedback">
+                            Please enter a username
+                        </div>
                         <!-- password -->
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password"
-                            autocomplete="new-password">
+                            autocomplete="new-password" required>
+                        <div class="invalid-feedback">
+                            Must input a password
+                        </div>
                         <!-- confirm password -->
                         <label for="confirm_password">Confirm password</label>
                         <input type="password" id="confirm_password" name="confirm_password" class="form-control"
-                            placeholder="Confirm Password" autocomplete="new-password">
+                            placeholder="Confirm Password" autocomplete="new-password" required>
+                        <div class="invalid-feedback">
+                            Please confirm your password
+                        </div>
                         <p class="text-muted small px-3">
                             Creating an account means you're okay with our <a href="#">Terms of Service</a> and our <a
                                 href="#">Privacy Policy</a>
