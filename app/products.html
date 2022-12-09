@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +17,7 @@
   <link rel="stylesheet" href="../public/css/products.css">
   <link rel="stylesheet" href="../public/css/cart.css">
   <link rel="stylesheet" href="../public/css/overwrite.css">
+  <link rel="stylesheet" href="../public/css/loader.css">
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -30,9 +30,7 @@
   <!-- custom js -->
   <script src="../public/js/main.js" defer></script>
   <script src="../public/js/products.js" defer></script>
-
 </head>
-
 <body>
   <main>
     <!-- navigation -->
@@ -76,20 +74,20 @@
       </div>
     </div>
     <!-- template stops here -->
+    <div class="container text-center">
+      <ul class="nav nav-pills nav-fill" id="categories">
+      </ul>
+    </div>
     <div class="container">
+      <div class="text-center page-loading-status">
+        <div class="spinner-border" role="status" style="width: 3rem; height: 3rem;">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p>Loading...
+        </p>
+      </div>
+      <h1 id="ctgry" class="text-center p-4"></h1>
       <div class="row">
-        <div class="col-2">
-          <h1 class="h3">Categories</h1>
-          <div class="accordion accordion-flush" id="accord-categories">
-
-          </div>
-        </div>
-        <div class="col-10">
-          <h1 id="ctgry"></h1>
-          <div class="row">
-
-          </div>
-        </div>
       </div>
     </div>
     <!-- bootstrap toast -->
@@ -105,7 +103,6 @@
       </div>
     </div>
     <!-- end bootstrap toast -->
-
   </main>
   <!-- footer -->
   <div class="container">
@@ -133,5 +130,4 @@
   </script>
   <!--End of Tawk.to Script-->
 </body>
-
 </html>
