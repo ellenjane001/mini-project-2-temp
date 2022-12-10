@@ -87,18 +87,18 @@ let NavBarInitiator = {
             a.href = `${nav[i].Location}`
             a.classList.add('nav-link')
             a.id = nav[i].Title.toLowerCase()
-            li.appendChild(a)
-            ul.appendChild(li)
+            li.appendChild(a)       
+            ul.appendChild(li)  
         }
     }
 }
 
 let Cart = {
     initiator: () => {
-        cartItems = JSON.parse(sessionStorage.getItem('cart')).items || [];
+        return cartItems = JSON.parse(sessionStorage.getItem('cart')).items || [];
     },
-    ADD: () => {
-
+    ADD: (value) => {
+        console.log(value)
     },
     loadCart: () => {
 

@@ -51,10 +51,10 @@ class Products {
     }
     fetchPerCategory = async (obj) => {
         // get all products from firebase API
-        let response = await App.GET(`${obj}.json`)
-        Object.keys(response).forEach(e => {
-            CONTAINER.appendChild(this.generateCard(response[e]))
-        })
+            let response = await App.GET(`${obj}.json`)
+            Object.keys(response).forEach(e => {
+                CONTAINER.appendChild(this.generateCard(response[e]))
+            })
         this.loadProduct()
     }
     loadProduct = () => {
@@ -73,22 +73,36 @@ class Products {
                 addToCartBtn.classList.add('btn')
                 addToCartBtn.classList.add('btn-outline-primary')
                 addToCartBtn.appendChild(document.createTextNode('Add to cart'))
+                addToCartBtn.addEventListener('click', (e) => Cart.ADD(e.target.parentElement.parentElement))
                 let btnGroup = document.createElement('div')
                 btnGroup.classList.add('btn-group')
                 btnGroup.setAttribute('role', 'group')
+                // append buttons to button group
                 btnGroup.appendChild(btn)
                 btnGroup.appendChild(addToCartBtn)
-                // append button to container
                 let row = this.generateRow()
+                // create div with column class
                 let col1 = this.generateColumn(4)
                 let col2 = this.generateColumn(8)
                 col1.appendChild(this.generateProduct(JSON.parse(e.getAttribute('data-value'))))
+                col2.appendChild(this.generateProductDetails(JSON.parse(e.getAttribute('data-value')).name))
+                col2.appendChild(this.generateIframe(JSON.parse(e.getAttribute('data-value')).specification))
                 col2.appendChild(btnGroup)
                 row.appendChild(col1)
                 row.appendChild(col2)
                 CONTAINER.appendChild(row)
             })
         })
+    }
+    generateProductDetails = (data) => {
+        let h3 = document.createElement('h3')
+        h3.innerText = data
+        return h3
+    }
+    generateIframe = (data) => {
+        let iframe = document.createElement('iframe')
+        iframe.src = data
+        return iframe
     }
     generateProduct = (data) => {
         let row = this.generateRow()
@@ -124,6 +138,7 @@ class Products {
     }
 
     generateCard = (data) => {
+        console.log(data)
         let column = document.createElement('div')
         let columnClasses = ['col', 'm-2']
         for (let a = 0; a < columnClasses.length; a++) {
