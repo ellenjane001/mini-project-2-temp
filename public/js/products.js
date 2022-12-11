@@ -62,6 +62,7 @@ class Products {
         document.querySelector('.page-loading-status').style.display = 'none'
         document.querySelectorAll('.btn.btn-primary').forEach(e => {
             e.addEventListener('click', () => {
+                let data = JSON.parse(e.getAttribute('data-value'))
                 CONTAINER.innerHTML = ''
                 let btn = document.createElement('button')
                 btn.appendChild(document.createTextNode('Back'))
@@ -80,14 +81,32 @@ class Products {
                 // append buttons to button group
                 btnGroup.appendChild(btn)
                 btnGroup.appendChild(addToCartBtn)
+                btnGroup.classList.add('p-2')
                 let row = this.generateRow()
                 // create div with column class
                 let col1 = this.generateColumn(4)
                 let col2 = this.generateColumn(8)
-                col1.appendChild(this.generateProduct(JSON.parse(e.getAttribute('data-value'))))
-                col2.appendChild(this.generateProductDetails(JSON.parse(e.getAttribute('data-value')).name))
-                col2.appendChild(this.generateProdSpecification(JSON.parse(e.getAttribute('data-value'))))
-                col2.appendChild(btnGroup)
+                col1.classList.add('d-flex')
+                col1.classList.add('flex-column')
+                col1.classList.add('align-items-center')
+                col2.classList.add('d-flex')
+                col2.classList.add('flex-column')
+                col2.classList.add('align-items-start')
+                col2.classList.add('gap-2')
+                let span = document.createElement('span')
+                span.style.fontSize = '10px'
+                span.style.fontStyle = 'italic'
+                span.classList.add('p-1')
+                span.innerText = 'Click on the photo to view different pespective'
+                col1.appendChild(this.generateProduct(data))
+                col1.appendChild(span)
+
+                col1.appendChild(btnGroup)
+                col2.appendChild(this.generateProductDetails(data.name))
+                if (Object.keys(data).includes('price')) {
+                    col2.appendChild(this.generateProdPrice(data.price))
+                }
+                col2.appendChild(this.generateProdSpecification(data))
                 row.appendChild(col1)
                 row.appendChild(col2)
                 CONTAINER.appendChild(row)
@@ -98,6 +117,19 @@ class Products {
         let h3 = document.createElement('h3')
         h3.innerText = data
         return h3
+    }
+
+    generateProdPrice = (data) => {
+
+        let span = document.createElement('span')
+        span.innerText = `Price: $${data} `
+        span.classList.add('h5')
+        span.classList.add('text-bg-dark')
+        span.classList.add('p-2')
+        span.classList.add('border')
+        span.classList.add('rounded-start')
+
+        return span
     }
     generateProdSpecification = (data) => {
         let div = document.createElement('div')
