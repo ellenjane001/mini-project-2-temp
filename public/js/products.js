@@ -51,10 +51,10 @@ class Products {
     }
     fetchPerCategory = async (obj) => {
         // get all products from firebase API
-            let response = await App.GET(`${obj}.json`)
-            Object.keys(response).forEach(e => {
-                CONTAINER.appendChild(this.generateCard(response[e]))
-            })
+        let response = await App.GET(`${obj}.json`)
+        Object.keys(response).forEach(e => {
+            CONTAINER.appendChild(this.generateCard(response[e]))
+        })
         this.loadProduct()
     }
     loadProduct = () => {
@@ -86,7 +86,7 @@ class Products {
                 let col2 = this.generateColumn(8)
                 col1.appendChild(this.generateProduct(JSON.parse(e.getAttribute('data-value'))))
                 col2.appendChild(this.generateProductDetails(JSON.parse(e.getAttribute('data-value')).name))
-                col2.appendChild(this.generateIframe(JSON.parse(e.getAttribute('data-value')).specification))
+                col2.appendChild(this.generateProdSpecification(JSON.parse(e.getAttribute('data-value'))))
                 col2.appendChild(btnGroup)
                 row.appendChild(col1)
                 row.appendChild(col2)
@@ -99,10 +99,48 @@ class Products {
         h3.innerText = data
         return h3
     }
-    generateIframe = (data) => {
-        let iframe = document.createElement('iframe')
-        iframe.src = data
-        return iframe
+    generateProdSpecification = (data) => {
+        let div = document.createElement('div')
+        let table = document.createElement('table')
+        let thead = document.createElement('thead')
+        let tr = document.createElement('tr')
+        let td = document.createElement('td')
+        let td2 = document.createElement('td')
+        let tbody = document.createElement('tbody')
+        let th = document.createElement('th')
+        let th2 = document.createElement('th')
+
+        table.classList.add('table')
+        th.innerText = 'Product Specification'
+        th.colSpan = 2
+        if (Object.keys(data).includes('specs')) {
+            for (let spec in data.specs) {
+                let trBody = document.createElement('tr')
+                let td2 = document.createElement('td')
+                let td = document.createElement('td')
+                td.innerText = spec
+                td2.innerText = data.specs[spec]
+                trBody.appendChild(td)
+                trBody.appendChild(td2)
+                tbody.appendChild(trBody)
+            }
+        } else {
+            let trBody = document.createElement('tr')
+            td.innerText = 'No Data'
+            td.colSpan = 2
+            td2.innerText = ''
+            trBody.appendChild(td)
+            tbody.appendChild(trBody)
+        }
+
+        tr.appendChild(th)
+        tr.appendChild(th2)
+        thead.appendChild(tr)
+        table.appendChild(thead)
+        table.appendChild(tbody)
+        div.appendChild(table)
+        return div
+
     }
     generateProduct = (data) => {
         let row = this.generateRow()
@@ -138,7 +176,6 @@ class Products {
     }
 
     generateCard = (data) => {
-        console.log(data)
         let column = document.createElement('div')
         let columnClasses = ['col', 'm-2']
         for (let a = 0; a < columnClasses.length; a++) {
