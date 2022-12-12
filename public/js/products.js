@@ -51,10 +51,10 @@ class Products {
     }
     fetchPerCategory = async (obj) => {
         // get all products from firebase API
-            let response = await App.GET(`${obj}.json`)
-            Object.keys(response).forEach(e => {
-                CONTAINER.appendChild(this.generateCard(response[e]))
-            })
+        let response = await App.GET(`${obj}.json`)
+        Object.keys(response).forEach(e => {
+            CONTAINER.appendChild(this.generateCard(response[e]))
+        })
         this.loadProduct()
     }
     loadProduct = () => {
@@ -62,6 +62,7 @@ class Products {
         document.querySelector('.page-loading-status').style.display = 'none'
         document.querySelectorAll('.btn.btn-primary').forEach(e => {
             e.addEventListener('click', () => {
+                let data = JSON.parse(e.getAttribute('data-value'))
                 CONTAINER.innerHTML = ''
                 let btn = document.createElement('button')
                 btn.appendChild(document.createTextNode('Back'))
@@ -72,38 +73,134 @@ class Products {
                 let addToCartBtn = document.createElement('button')
                 addToCartBtn.classList.add('btn')
                 addToCartBtn.classList.add('btn-outline-primary')
+                addToCartBtn.setAttribute('data-value', e.getAttribute('data-value'))
                 addToCartBtn.appendChild(document.createTextNode('Add to cart'))
-                addToCartBtn.addEventListener('click', (e) => Cart.ADD(e.target.parentElement.parentElement))
+                addToCartBtn.addEventListener('click', this.showConfirmationModal)
                 let btnGroup = document.createElement('div')
                 btnGroup.classList.add('btn-group')
                 btnGroup.setAttribute('role', 'group')
                 // append buttons to button group
                 btnGroup.appendChild(btn)
                 btnGroup.appendChild(addToCartBtn)
+                btnGroup.classList.add('p-2')
                 let row = this.generateRow()
                 // create div with column class
-                let col1 = this.generateColumn(4)
-                let col2 = this.generateColumn(8)
-                col1.appendChild(this.generateProduct(JSON.parse(e.getAttribute('data-value'))))
-                col2.appendChild(this.generateProductDetails(JSON.parse(e.getAttribute('data-value')).name))
-                col2.appendChild(this.generateIframe(JSON.parse(e.getAttribute('data-value')).specification))
-                col2.appendChild(btnGroup)
+                let col1 = this.generateColumn(['col-4', 'd-flex', 'flex-column', 'align-items-center'])
+                let col2 = this.generateColumn(['col-8', 'd-flex', 'flex-column', 'align-items-start', 'gap-2'])
+                let span = document.createElement('span')
+                span.style.fontSize = '10px'
+                span.style.fontStyle = 'italic'
+                span.classList.add('p-1')
+                span.innerText = 'Click on the photo to view different pespective'
+
+                col1.appendChild(this.generateProduct(data))
+                col1.appendChild(span)
+                col1.appendChild(btnGroup)
+
+                col2.appendChild(this.generateProductDetails(data.name))
+                if (Object.keys(data).includes('price')) {
+                    col2.appendChild(this.generateProdPrice(data.price))
+                }
+                col2.appendChild(this.generateProdSpecification(data))
                 row.appendChild(col1)
                 row.appendChild(col2)
                 CONTAINER.appendChild(row)
             })
         })
     }
+    showConfirmationModal = (e) => {
+        let countDiv = document.createElement('div')
+        countDiv.classList.add('d-flex')
+        countDiv.classList.add('gap-2')
+        countDiv.classList.add('align-items-center')
+        countDiv.classList.add('justify-content-center')
+        let countLbl = document.createElement('label')
+        countLbl.innerText = 'No. of items'
+        let count = document.createElement('input')
+        count.type = 'number'
+        count.min = 1
+        count.value = 1
+        count.onfocus = (e) => e.target.value = ''
+        count.classList.add('form-control-sm')
+        countDiv.appendChild(countLbl)
+        countDiv.appendChild(count)
+        document.getElementById('add-to-cart').setAttribute('data-value', e.target.getAttribute('data-value'))
+
+        if (document.querySelector('#myModal .modal-body').children.length == 1) {
+            document.querySelector('#myModal .modal-body').children[0].remove()
+        }
+        document.querySelector('#myModal .modal-body').appendChild(countDiv)
+        const myModal = new bootstrap.Modal('#myModal', {
+        })
+        myModal.show()
+        this.addtoCart()
+    }
+    addtoCart = () => {
+        document.getElementById('add-to-cart').addEventListener('click', (e) => Cart.ADD(e.target.getAttribute('data-value'), document.querySelector('input[class="form-control-sm"]')))
+
+    }
     generateProductDetails = (data) => {
         let h3 = document.createElement('h3')
         h3.innerText = data
         return h3
     }
-    generateIframe = (data) => {
-        let iframe = document.createElement('iframe')
-        iframe.src = data
-        return iframe
+
+    generateProdPrice = (data) => {
+
+        let span = document.createElement('span')
+        span.innerText = `Price: $${data} `
+        span.classList.add('h5')
+        span.classList.add('text-bg-dark')
+        span.classList.add('p-2')
+        span.classList.add('border')
+        span.classList.add('rounded-start')
+
+        return span
     }
+    generateProdSpecification = (data) => {
+        let div = document.createElement('div')
+        let table = document.createElement('table')
+        let thead = document.createElement('thead')
+        let tr = document.createElement('tr')
+        let td = document.createElement('td')
+        let td2 = document.createElement('td')
+        let tbody = document.createElement('tbody')
+        let th = document.createElement('th')
+        let th2 = document.createElement('th')
+
+        table.classList.add('table')
+        th.innerText = 'Product Specification'
+        th.colSpan = 2
+        if (Object.keys(data).includes('specs')) {
+            for (let spec in data.specs) {
+                let trBody = document.createElement('tr')
+                let td2 = document.createElement('td')
+                let td = document.createElement('td')
+                td.innerText = spec
+                td2.innerText = data.specs[spec]
+                trBody.appendChild(td)
+                trBody.appendChild(td2)
+                tbody.appendChild(trBody)
+            }
+        } else {
+            let trBody = document.createElement('tr')
+            td.innerText = 'No Data'
+            td.colSpan = 2
+            td2.innerText = ''
+            trBody.appendChild(td)
+            tbody.appendChild(trBody)
+        }
+
+        tr.appendChild(th)
+        tr.appendChild(th2)
+        thead.appendChild(tr)
+        table.appendChild(thead)
+        table.appendChild(tbody)
+        div.appendChild(table)
+        return div
+
+    }
+
     generateProduct = (data) => {
         let row = this.generateRow()
         // append image based on length
@@ -131,14 +228,17 @@ class Products {
         row.classList.add('row')
         return row
     }
-    generateColumn = (size) => {
+    generateColumn = (classes) => {
         let col = document.createElement('div')
-        col.classList.add(`col-${size}`)
+
+        for (let i = 0; i < classes.length; i++) {
+            col.classList.add(classes[i])
+        }
+
         return col
     }
 
     generateCard = (data) => {
-        console.log(data)
         let column = document.createElement('div')
         let columnClasses = ['col', 'm-2']
         for (let a = 0; a < columnClasses.length; a++) {
