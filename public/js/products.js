@@ -73,8 +73,9 @@ class Products {
                 let addToCartBtn = document.createElement('button')
                 addToCartBtn.classList.add('btn')
                 addToCartBtn.classList.add('btn-outline-primary')
+                addToCartBtn.setAttribute('data-value', e.getAttribute('data-value'))
                 addToCartBtn.appendChild(document.createTextNode('Add to cart'))
-                addToCartBtn.addEventListener('click', (e) => Cart.ADD(e.target.parentElement.parentElement))
+                addToCartBtn.addEventListener('click', this.showConfirmationModal)
                 let btnGroup = document.createElement('div')
                 btnGroup.classList.add('btn-group')
                 btnGroup.setAttribute('role', 'group')
@@ -84,24 +85,18 @@ class Products {
                 btnGroup.classList.add('p-2')
                 let row = this.generateRow()
                 // create div with column class
-                let col1 = this.generateColumn(4)
-                let col2 = this.generateColumn(8)
-                col1.classList.add('d-flex')
-                col1.classList.add('flex-column')
-                col1.classList.add('align-items-center')
-                col2.classList.add('d-flex')
-                col2.classList.add('flex-column')
-                col2.classList.add('align-items-start')
-                col2.classList.add('gap-2')
+                let col1 = this.generateColumn(['col-4', 'd-flex', 'flex-column', 'align-items-center'])
+                let col2 = this.generateColumn(['col-8', 'd-flex', 'flex-column', 'align-items-start', 'gap-2'])
                 let span = document.createElement('span')
                 span.style.fontSize = '10px'
                 span.style.fontStyle = 'italic'
                 span.classList.add('p-1')
                 span.innerText = 'Click on the photo to view different pespective'
+
                 col1.appendChild(this.generateProduct(data))
                 col1.appendChild(span)
-
                 col1.appendChild(btnGroup)
+
                 col2.appendChild(this.generateProductDetails(data.name))
                 if (Object.keys(data).includes('price')) {
                     col2.appendChild(this.generateProdPrice(data.price))
@@ -112,6 +107,37 @@ class Products {
                 CONTAINER.appendChild(row)
             })
         })
+    }
+    showConfirmationModal = (e) => {
+        let countDiv = document.createElement('div')
+        countDiv.classList.add('d-flex')
+        countDiv.classList.add('gap-2')
+        countDiv.classList.add('align-items-center')
+        countDiv.classList.add('justify-content-center')
+        let countLbl = document.createElement('label')
+        countLbl.innerText = 'No. of items'
+        let count = document.createElement('input')
+        count.type = 'number'
+        count.min = 1
+        count.value = 1
+        count.onfocus = (e) => e.target.value = ''
+        count.classList.add('form-control-sm')
+        countDiv.appendChild(countLbl)
+        countDiv.appendChild(count)
+        document.getElementById('add-to-cart').setAttribute('data-value', e.target.getAttribute('data-value'))
+
+        if (document.querySelector('#myModal .modal-body').children.length == 1) {
+            document.querySelector('#myModal .modal-body').children[0].remove()
+        }
+        document.querySelector('#myModal .modal-body').appendChild(countDiv)
+        const myModal = new bootstrap.Modal('#myModal', {
+        })
+        myModal.show()
+        this.addtoCart()
+    }
+    addtoCart = () => {
+        document.getElementById('add-to-cart').addEventListener('click', (e) => Cart.ADD(e.target.getAttribute('data-value'), document.querySelector('input[class="form-control-sm"]')))
+
     }
     generateProductDetails = (data) => {
         let h3 = document.createElement('h3')
@@ -174,6 +200,7 @@ class Products {
         return div
 
     }
+
     generateProduct = (data) => {
         let row = this.generateRow()
         // append image based on length
@@ -201,9 +228,13 @@ class Products {
         row.classList.add('row')
         return row
     }
-    generateColumn = (size) => {
+    generateColumn = (classes) => {
         let col = document.createElement('div')
-        col.classList.add(`col-${size}`)
+
+        for (let i = 0; i < classes.length; i++) {
+            col.classList.add(classes[i])
+        }
+
         return col
     }
 
