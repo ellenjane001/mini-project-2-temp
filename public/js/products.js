@@ -9,6 +9,8 @@ NavBarInitiator.appendLI(nav)
 document.getElementById('products').classList.add('active')
 // products container
 const CONTAINER = document.querySelector('.container>h1+.row')
+const myModal = new bootstrap.Modal('#myModal', {
+})
 class Products {
     // nav for generating categories
     appendTabs = (data, i) => {
@@ -130,13 +132,12 @@ class Products {
             document.querySelector('#myModal .modal-body').children[0].remove()
         }
         document.querySelector('#myModal .modal-body').appendChild(countDiv)
-        const myModal = new bootstrap.Modal('#myModal', {
-        })
+
         myModal.show()
         this.addtoCart()
     }
     addtoCart = () => {
-        document.getElementById('add-to-cart').addEventListener('click', (e) => Cart.ADD(e.target.getAttribute('data-value'), document.querySelector('input[class="form-control-sm"]')))
+        document.getElementById('add-to-cart').addEventListener('click', (e) => Cart.ADD(e.target.getAttribute('data-value'), document.querySelector('input[class="form-control-sm"]').value))
 
     }
     generateProductDetails = (data) => {
