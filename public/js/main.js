@@ -283,6 +283,7 @@ let Cart = {
         document.querySelector('#cart-modal .modal-body table tbody').appendChild(tr)
     },
     clear: () => {
+        // clear tbody elements
         if (document.querySelector('#cart-modal .modal-body table tbody').children.length > 0) {
             document.querySelector('#cart-modal .modal-body table tbody').innerHTML = ''
         }
@@ -293,3 +294,11 @@ document.getElementById('cart-btn').addEventListener('click', e => {
     Cart.VIEW()
 })
 Cart.LOAD()
+document.getElementById('checkout').addEventListener('click', e => {
+    e.preventDefault()
+    console.log(e.target.parentElement.parentElement.getElementsByTagName('input'))
+})
+
+document.getElementById('select-table-items').addEventListener('change', event => {
+    Array.from(document.querySelector('#cart-modal .modal-body table tbody').getElementsByTagName('input')).forEach(e => event.target.checked === true ? e.checked = true : e.checked = false)
+})
