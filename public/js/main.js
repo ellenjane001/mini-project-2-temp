@@ -13,6 +13,8 @@ else {
     document.querySelector('.right-wrapper.btn-group').style.visibility = "visible"
     document.querySelector('html body main .logout').style.display = 'none'
 }
+const cartModal = new bootstrap.Modal('#cart-modal', {
+})
 // Bootstrap toast
 const toastTrigger = document.querySelector('html body main .logout')
 const toastLiveExample = document.getElementById('liveToast')
@@ -90,7 +92,7 @@ let NavBarInitiator = {
 let Cart = {
     setStorage: (data) => {
         sessionStorage.setItem('cart', JSON.stringify(data))
-        console.log(sessionStorage.getItem('cart'))
+        console.log(JSON.stringify(JSON.parse(sessionStorage.getItem('cart')), null, 2))
         Cart.LOAD()
     },
     initiator: () => {
@@ -104,24 +106,28 @@ let Cart = {
         if (value.items.filter(e => e.name === data.name).length > 0) {
             value.items.forEach(element => {
                 if (element.name === data.name) {
-                    element.count++
+                    element.count = element.count + data.count
                     element.price = element.price + data.price
                 }
-            });
+            })
         } else {
             value.items.push(data)
         }
         value.totalAmount = value.items.map(e => e.price).reduce((a, b) => a + b)
         Cart.setStorage(value)
+        location.reload()
     },
     ADD: (value, count) => {
+        console.log(count)
         let item = JSON.parse(value)
         let itemObj = {
             image: item.image_link.shift(),
             name: item.name,
-            price: parseFloat(item.price),
-            count: parseInt(count.value)
+            price: parseFloat(item.price) * count,
+            pricePerUnit: parseFloat(item.price),
+            count: parseInt(count)
         }
+        console.log(itemObj)
         Cart.SET(itemObj)
     },
     LOAD: () => {
@@ -129,8 +135,8 @@ let Cart = {
         if (Object.keys(sessionStorage).includes('cart')) {
             let cart = JSON.parse(sessionStorage.getItem('cart')).items.map(e => e.count)
             if (cart.length > 0) {
-                cart.reduce((a, b) => a + b)
-                cartQuantity = cart
+                let c = cart.reduce((a, b) => a + b)
+                cartQuantity = c
             } else {
                 cartQuantity = 0
             }
@@ -152,7 +158,6 @@ let Cart = {
                     tr.style.verticalAlign = 'middle'
                     input.type = 'checkbox'
                     input.setAttribute('data-value', JSON.stringify(data.items[i]))
-
                     thumbnail.height = 100
                     thumbnail.width = 100
                     thumbnail.style.objectFit = 'contain'
@@ -160,7 +165,6 @@ let Cart = {
                     tdAmount.innerText = `$${data.items[i].price.toFixed(2)}`
                     tdName.innerText = data.items[i].name
                     tdQuantity.innerText = data.items[i].count
-
                     tdDelete.classList.add('text-center')
                     tdDeleteOne.classList.add('text-center')
                     let icon = document.createElement('i')
@@ -178,46 +182,96 @@ let Cart = {
                     tdDeleteOne.addEventListener('click', Cart.REMOVE)
                     tdDelete.addEventListener('click', Cart.DELETE)
                     tdDeleteOne.style.cursor = 'pointer'
+                    tdDeleteOne.classList.add('border')
                     tdDelete.style.cursor = 'pointer'
+                    tdDelete.classList.add('border')
                     tdCheck.appendChild(input)
                     tdImage.appendChild(thumbnail)
                     tdDeleteOne.appendChild(icon2)
                     tdDelete.appendChild(icon)
-
                     tdQuantity.classList.add('text-center')
                     tdQuantity.classList.add('h3')
                     let elements = [tdCheck, tdName, tdImage, tdQuantity, tdAmount, tdDeleteOne, tdDelete]
                     for (let a = 0; a < elements.length; a++) {
                         tr.appendChild(elements[a])
                     }
-                    console.log(tr)
                     document.querySelector('#cart-modal .modal-body table tbody').appendChild(tr)
                 }
                 document.getElementById('total-amount').innerText = `$${data.totalAmount.toFixed(2)}`
             }
             else {
+                Cart.clear()
                 Cart.noItem()
             }
-
         } else {
+            Cart.clear()
             Cart.noItem()
         }
     },
     DELETE: (e) => {
         let data = JSON.parse(e.target.getAttribute('data-value'))
         let value = Cart.initiator()
-        console.log(data)
-
         value.items = value.items.filter(a => a.name !== data.name)
-        console.log(value)
-        Cart.clear()
-        Cart.noItem()
+        if (value.items.length > 1) {
+            value.totalAmount = value.items.map(e => e.price).reduce((a, b) => a + b)
+        }
+        else if (value.items.length === 1) {
+            value.totalAmount = value.items.map(e => e.price)[0]
+        } else {
+            value.totalAmount = 0
+        }
+        document.querySelector('#cart-modal .modal-body table tbody').removeChild(e.target.parentElement)
+        document.getElementById('total-amount').innerText = `$${value.totalAmount.toFixed(2)}`
+        if (document.querySelector('#cart-modal .modal-body table tbody').children.length < 1) {
+            Cart.noItem()
+        }
         Cart.setStorage(value)
     },
     REMOVE: (e) => {
         let data = JSON.parse(e.target.getAttribute('data-value'))
+        let value = Cart.initiator()
+        console.log(value.items.filter(e => e.name === data.name))
+        if (value.items.filter(e => e.name === data.name).length > 0) {
+            for (item in value.items) {
+                if (value.items[item].name === data.name) {
+                    if (value.items[item].count !== 0) {
+                        value.items[item].count = --value.items[item].count
+                        value.items[item].price = value.items[item].price - data.pricePerUnit
+                        e.target.parentElement.children[3].innerText = value.items[item].count
+                        e.target.parentElement.children[4].innerText = value.items[item].price.toFixed(2)
+                    }
+
+                    if (value.items[item].count === 0) {
+
+                        document.querySelector('#cart-modal .modal-body table tbody').removeChild(e.target.parentElement)
+                    }
+                }
+            }
+        }
+        for (item in value.items) {
+
+            if (value.items[item].count === 0) {
+                value.items = value.items.filter(a => a.name !== data.name)
+            }
+        }
+        if (value.items.length > 1) {
+            value.totalAmount = value.items.map(e => e.price).reduce((a, b) => a + b)
+        }
+        else if (value.items.length === 1) {
+            value.totalAmount = value.items.map(e => e.price)[0]
+        } else {
+            value.totalAmount = 0
+        }
+        document.getElementById('total-amount').innerText = `$${value.totalAmount.toFixed(2)}`
+        console.log(value)
+        if (document.querySelector('#cart-modal .modal-body table tbody').children.length < 1) {
+            Cart.noItem()
+        }
+        Cart.setStorage(value)
     },
     noItem: () => {
+        // if no item in cart
+        // table will show 'cart is empty'
         let tr = document.createElement('tr')
         let td = document.createElement('td')
         td.innerText = 'cart is empty'
@@ -229,15 +283,22 @@ let Cart = {
         document.querySelector('#cart-modal .modal-body table tbody').appendChild(tr)
     },
     clear: () => {
+        // clear tbody elements
         if (document.querySelector('#cart-modal .modal-body table tbody').children.length > 0) {
             document.querySelector('#cart-modal .modal-body table tbody').innerHTML = ''
         }
     }
 }
 document.getElementById('cart-btn').addEventListener('click', e => {
-    const myModal = new bootstrap.Modal('#cart-modal', {
-    })
-    myModal.show()
+    cartModal.show()
     Cart.VIEW()
 })
 Cart.LOAD()
+document.getElementById('checkout').addEventListener('click', e => {
+    e.preventDefault()
+    console.log(e.target.parentElement.parentElement.getElementsByTagName('input'))
+})
+
+document.getElementById('select-table-items').addEventListener('change', event => {
+    Array.from(document.querySelector('#cart-modal .modal-body table tbody').getElementsByTagName('input')).forEach(e => event.target.checked === true ? e.checked = true : e.checked = false)
+})

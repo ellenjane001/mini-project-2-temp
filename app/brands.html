@@ -63,11 +63,11 @@
                         <!-- append navbar here -->
                     </ul>
                     <!-- cart -->
-                    <button type="button" class="cart-btn btn btn-link position-relative text-dark">
+                    <button type="button" id="cart-btn" class="btn btn-link position-relative text-dark">
                         <i class="fa-solid fa-cart-shopping fa-xl"></i>
                         <!-- quantity -->
-                        <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-quantity">
+                        <span id="cart-quantity"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             0
                         </span>
                     </button>
@@ -156,7 +156,40 @@
                 </div>
             </div>
         </div>
-        
+        <!-- cart modal -->
+        <div id="cart-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Items in cart</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-column gap-2" id="cart-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Item Name</th>
+                                    <th>Image</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                    <th colspan="2">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <span class="text-end">Total Amount: <span id="total-amount">0</span></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="checkout">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end-cart-modal -->
         <!-- bootstrap toast -->
         <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
             <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

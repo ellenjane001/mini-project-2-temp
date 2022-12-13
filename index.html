@@ -31,7 +31,6 @@
     <script src="./public/js/main.js" defer></script>
     <script src="./public/js/index.js" defer></script>
     <script src="./public/js/swiper.js" defer></script>
-    <script src="./public/js/cart.js" defer></script>
 
 </head>
 <body>
@@ -51,10 +50,10 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
                         <!-- append navbar here -->
                     </ul>
-                    <button type="button" class="cart-btn btn btn-link position-relative text-dark">
+                    <button type="button" id="cart-btn" class="btn btn-link position-relative text-dark">
                         <i class="fa-solid fa-cart-shopping fa-xl"></i>
-                        <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-quantity">
+                        <span id="cart-quantity"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             0
                         </span>
                     </button>
@@ -86,12 +85,13 @@
                     <p class="lead">Find the most affordable cutting edge technology within your budget</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                         <!-- buy now CTA button -->
-                        <a href="javascript:void(0)" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold text-uppercase">
+                        <a href="./app/products.html"
+                            class="btn btn-primary btn-lg px-4 me-md-2 fw-bold text-uppercase">
                             <i class="fa-solid fa-basket-shopping fa-bounce pe-2"></i>
                             Buy now
                         </a>
                         <!-- Discount CTA button -->
-                        <a href="javascript:void(0)"
+                        <a href="./app/login.html"
                             class="btn btn-outline-light btn-lg px-4 me-md-2 fw-bold text-uppercase">
                             <i class="fa-solid fa-money-bill-1-wave fa-fade pe-2"></i>Get
                             Discount
@@ -312,22 +312,40 @@
             </div>
         </div>
         <!-- end bootstrap toast -->
-        <!-- cart-modal -->
-        <div class="cart-modal-overlay">
-            <div class="cart-modal text-bg-light">
-                <button title="close" type="button" class="btn btn-link" id="close-btn">
-                    <i class="fas fa-times"></i></button>
-                <h1 class="cart-is-empty">Cart is empty</h1>
-                <div class="product-rows">
-                </div>
-                <div class="total">
-                    <h1 class="cart-total">TOTAL</h1>
-                    <span class="total-price">$0</span>
-                    <button type="button" class="purchase-btn btn btn-success">PURCHASE</button>
+        <!-- cart modal -->
+        <div id="cart-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Items in cart</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-column gap-2" id="cart-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Item Name</th>
+                                    <th>Image</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                    <th colspan="2">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <span class="text-end">Total Amount: <span id="total-amount">0</span></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="checkout">Checkout</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- cart modal end -->
+        <!-- end-cart-modal -->
         <!-- chat widget -->
         <!--Start of Tawk.to Script-->
         <script type="text/javascript">
