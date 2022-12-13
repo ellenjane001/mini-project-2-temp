@@ -277,9 +277,7 @@ let Cart = {
         td.innerText = 'cart is empty'
         tr.appendChild(td)
         td.colSpan = document.querySelector('#cart-modal .modal-body table thead tr').children.length
-        td.classList.add('text-center')
-        td.classList.add('fst-italic')
-        td.classList.add('fw-bold')
+        td.classList.add('text-center', 'fst-italic', 'fw-bold')
         document.querySelector('#cart-modal .modal-body table tbody').appendChild(tr)
     },
     clear: () => {
@@ -296,7 +294,15 @@ document.getElementById('cart-btn').addEventListener('click', e => {
 Cart.LOAD()
 document.getElementById('checkout').addEventListener('click', e => {
     e.preventDefault()
-    console.log(e.target.parentElement.parentElement.getElementsByTagName('input'))
+    let checked = Array.from(e.target.parentElement.parentElement.getElementsByTagName('table')[0].getElementsByTagName('tbody')[0].getElementsByTagName('input')).filter(a => a.checked)
+    if (checked.length > 0) {
+
+    } else {
+        let span = document.createElement('span')
+        span.innerText = "No item selected"
+        span.classList.add('invalid-feedback')
+        document.querySelector('div[class="modal-footer"]').appendChild(span)
+    }
 })
 
 document.getElementById('select-table-items').addEventListener('change', event => {
