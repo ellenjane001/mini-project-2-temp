@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Mart - Checkout</title>
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../public/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../public/assets/favicon/site.webmanifest">
+    <!-- end favicon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"
+        defer></script>
+    <!-- font-awesome -->
+    <script src="https://kit.fontawesome.com/b140af86b3.js" crossorigin="anonymous" defer></script>
+    <!-- custom js -->
+
+</head>
+<body>
+    <main>
+        <!-- navigation -->
+        <nav class="navbar navbar-expand-lg px-3 border border-light">
+            <div class="container">
+                <a class="navbar-brand" href="../../index.html"><img
+                        src="https://lh3.googleusercontent.com/Dip-9IoATCpV77-ypDRkF0ro7bMA0GQ1ahI_iJN5aacUslAYlKM8E4W4TRyqrQKKMk197f6XosEFEH0kjugf6h-qic7lzYIhsy0e8b75SPJzY7TYCHjOYI-mPgoF8SswcwAqOKJQYg=w2400"
+                        alt="img" height="100"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-uppercase">
+                        <!-- main js file will append li element here -->
+                    </ul>
+                    <button type="button" title="logout" href="javascript:void(0)" class="btn btn-link logout m-2">
+                        <i class="fa-solid fa-right-from-bracket fa-2xl"></i></button>
+                </div>
+            </div>
+        </nav>
+        <!-- contacts bar -->
+        <div class="container px-4 py-3 border border-light d-flex justify-content-between align-items-center">
+            <div class="left-wrapper d-flex gap-3">
+                <!-- facebook -->
+                <a title="fb-link" href="#" class="fb"><i class="fa-brands fa-square-facebook fa-xl"></i></a>
+                <span>Questions? Call: 123-4567 / 891-0111</span>
+            </div>
+            <!-- <div class="right-wrapper btn-group">
+               Login Button -->
+            <!-- <a href="./login.html" class="btn btn-outline-dark btn-sm">Login</a> -->
+            <!-- Register Button -->
+            <!-- <a href="./sign-up.html" class="btn btn-dark btn-sm">Sign-up</a> -->
+        </div> -->
+        </div>
+        <!-- template stops here -->
+        <div class="container py-5">
+            <h1 class="text-center">Guest Checkout</h1>
+            <div class="row g-5">
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Your cart</span>
+                        <span id="cart-quantity" class="badge bg-primary rounded-pill">3</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total (USD)</span>
+                            <strong id="total-amount">$20</strong>
+                        </li>
+                    </ul>
+                    <form class="card p-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Promo code"
+                                pwa2-uuid="EDITOR/input-E92-E00-65B88-C08" pwa-fake-editor="">
+                            <button type="submit" class="btn btn-secondary">Redeem</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Billing address</h4>
+                    <form class="needs-validation" novalidate="" id="checkout-form">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">First name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value=""
+                                    required="" pwa2-uuid="EDITOR/input-7E0-B6B-0E1C7-C49" pwa-fake-editor="">
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value=""
+                                    required="" pwa2-uuid="EDITOR/input-C8D-AEF-15502-43E" pwa-fake-editor="">
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                                    required="" pwa2-uuid="EDITOR/input-AFD-659-9716E-DF6" pwa-fake-editor="">
+                                <div class="invalid-feedback">
+                                    Please enter your shipping address.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="address2" class="form-label">Address 2 <span
+                                        class="text-muted">(Optional)</span></label>
+                                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite"
+                                    pwa2-uuid="EDITOR/input-E38-21E-59304-3F0" pwa-fake-editor="">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="country" class="form-label">Country</label>
+                                <select class="form-select" id="country" required="">
+                                    <option value="">Choose...</option>
+                                    <option>United States</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid country.
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="state" class="form-label">State</label>
+                                <input type="text" class="form-control" id="state" placeholder="" required=""
+                                    pwa2-uuid="EDITOR/input-811-E77-19D6C-C6E" pwa-fake-editor="">
+                                <div class="invalid-feedback">
+                                    Please provide a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Zip</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required=""
+                                    pwa2-uuid="EDITOR/input-811-E77-19D6C-C6E" pwa-fake-editor="">
+                                <div class="invalid-feedback">
+                                    Zip code required.
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="same-address">
+                            <label class="form-check-label" for="same-address">Shipping address is the same as my
+                                billing
+                                address</label>
+                        </div>
+                        <hr class="my-4">
+                        <div id="paypal"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- bootstrap toast -->
+        <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/null/external-information-travel-dreamstale-lineal-dreamstale.png"
+                        class="rounded me-auto" alt="icon">
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body text-center">
+                    Logout Successful
+                </div>
+            </div>
+        </div>
+        <!-- end bootstrap toast -->
+        <!-- cart modal -->
+        <div id="cart-modal" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Items in cart</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-column gap-2" id="cart-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-table-items"></th>
+                                    <th>Item Name</th>
+                                    <th>Image</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                    <th colspan="2">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <span class="text-end">Total Amount: <span id="total-amount">0</span></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="checkout">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end-cart-modal -->
+    </main>
+    <!-- footer -->
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Privacy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Term of use</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">© Tech Mart 2022</p>
+        </footer>
+    </div>
+
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AZ9oCUA2ecDXcNFpCBO8xNB7aiPmks8rxrPJ9zBQ3EBUZbmRKMnsIp9AwIDY9pGd2_So6Bvxrf0tHmSs"
+        data-namespace="paypal_sdk" defer></script>
+    <script src="../public/js/checkout.js" defer></script>
+    <!-- chat widget -->
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/637ee03ab0d6371309d0cb8a/1gijpnpei';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>
