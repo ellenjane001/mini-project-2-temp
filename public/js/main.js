@@ -3,16 +3,16 @@ const firebaseAPI = 'https://techmart-96763-default-rtdb.asia-southeast1.firebas
 let cartItems = [];
 // determine if login is saved in localstorage 
 let login = localStorage.getItem('login')
-if (login === 'true') {
-    // show logout button
-    document.querySelector('html body main .logout').style.display = 'inline-block'
-    document.querySelector('.right-wrapper.btn-group').style.visibility = "hidden"
-}
-else {
-    // hide logout button
-    document.querySelector('.right-wrapper.btn-group').style.visibility = "visible"
-    document.querySelector('html body main .logout').style.display = 'none'
-}
+// if (login === 'true') {
+//     // show logout button
+//     document.querySelector('html body main .logout').style.display = 'inline-block'
+//     document.querySelector('.right-wrapper.btn-group').style.visibility = "hidden"
+// }
+// else {
+//     // hide logout button
+//     document.querySelector('.right-wrapper.btn-group').style.visibility = "visible"
+//     document.querySelector('html body main .logout').style.display = 'none'
+// }
 const cartModal = new bootstrap.Modal('#cart-modal', {
 })
 // Bootstrap toast
@@ -185,13 +185,12 @@ let Cart = {
                     tdDeleteOne.classList.add('border')
                     tdDelete.style.cursor = 'pointer'
                     tdDelete.classList.add('border')
-                    tdCheck.appendChild(input)
                     tdImage.appendChild(thumbnail)
                     tdDeleteOne.appendChild(icon2)
                     tdDelete.appendChild(icon)
                     tdQuantity.classList.add('text-center')
                     tdQuantity.classList.add('h3')
-                    let elements = [tdCheck, tdName, tdImage, tdQuantity, tdAmount, tdDeleteOne, tdDelete]
+                    let elements = [tdName, tdImage, tdQuantity, tdAmount, tdDeleteOne, tdDelete]
                     for (let a = 0; a < elements.length; a++) {
                         tr.appendChild(elements[a])
                     }
@@ -237,19 +236,16 @@ let Cart = {
                     if (value.items[item].count !== 0) {
                         value.items[item].count = --value.items[item].count
                         value.items[item].price = value.items[item].price - data.pricePerUnit
-                        e.target.parentElement.children[3].innerText = value.items[item].count
-                        e.target.parentElement.children[4].innerText = value.items[item].price.toFixed(2)
+                        e.target.parentElement.children[2].innerText = value.items[item].count
+                        e.target.parentElement.children[3].innerText = `$${value.items[item].price.toFixed(2)}`
                     }
-
                     if (value.items[item].count === 0) {
-
                         document.querySelector('#cart-modal .modal-body table tbody').removeChild(e.target.parentElement)
                     }
                 }
             }
         }
         for (item in value.items) {
-
             if (value.items[item].count === 0) {
                 value.items = value.items.filter(a => a.name !== data.name)
             }
@@ -277,9 +273,7 @@ let Cart = {
         td.innerText = 'cart is empty'
         tr.appendChild(td)
         td.colSpan = document.querySelector('#cart-modal .modal-body table thead tr').children.length
-        td.classList.add('text-center')
-        td.classList.add('fst-italic')
-        td.classList.add('fw-bold')
+        td.classList.add('text-center', 'fst-italic', 'fw-bold')
         document.querySelector('#cart-modal .modal-body table tbody').appendChild(tr)
     },
     clear: () => {
@@ -289,16 +283,25 @@ let Cart = {
         }
     }
 }
+
 document.getElementById('cart-btn').addEventListener('click', e => {
     cartModal.show()
     Cart.VIEW()
 })
+
+
 Cart.LOAD()
 document.getElementById('checkout').addEventListener('click', e => {
     e.preventDefault()
-    console.log(e.target.parentElement.parentElement.getElementsByTagName('input'))
-})
+    console.log(location)
+    if (location.href === location.protocol + '//' + location.host + '/index.html') {
 
-document.getElementById('select-table-items').addEventListener('change', event => {
-    Array.from(document.querySelector('#cart-modal .modal-body table tbody').getElementsByTagName('input')).forEach(e => event.target.checked === true ? e.checked = true : e.checked = false)
+        window.location.href = './app/checkout.html'
+    }
+    else {
+        console.log(location.href)
+        console.log(location.protocol + '//' + location.host + '/index.html')
+        window.location.href = './checkout.html'
+    }
+
 })
