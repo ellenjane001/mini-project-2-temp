@@ -55,60 +55,63 @@ class Products {
         // get all products from firebase API
         let response = await App.GET(`${obj}.json`)
         Object.keys(response).forEach(e => {
+            response[e]['key'] = e
             CONTAINER.appendChild(this.generateCard(response[e]))
         })
-        this.loadProduct()
     }
-    loadProduct = () => {
+    fetchPerItem = async (ctrgy, obj) => {
+        let response = await App.GET(`${ctrgy}/${obj}.json`)
+        console.log(response)
+    }
+    loadProducts = (e) => {
         // view product btn
         document.querySelector('.page-loading-status').style.display = 'none'
-        document.querySelectorAll('.btn.btn-primary').forEach(e => {
-            e.addEventListener('click', () => {
-                let data = JSON.parse(e.getAttribute('data-value'))
-                CONTAINER.innerHTML = ''
-                let btn = document.createElement('button')
-                btn.appendChild(document.createTextNode('Back'))
-                btn.classList.add('btn')
-                btn.classList.add('btn-primary')
-                // back button
-                btn.addEventListener('click', this.return)
-                let addToCartBtn = document.createElement('button')
-                addToCartBtn.classList.add('btn')
-                addToCartBtn.classList.add('btn-outline-primary')
-                addToCartBtn.setAttribute('data-value', e.getAttribute('data-value'))
-                addToCartBtn.appendChild(document.createTextNode('Add to cart'))
-                addToCartBtn.addEventListener('click', this.showConfirmationModal)
-                let btnGroup = document.createElement('div')
-                btnGroup.classList.add('btn-group')
-                btnGroup.setAttribute('role', 'group')
-                // append buttons to button group
-                btnGroup.appendChild(btn)
-                btnGroup.appendChild(addToCartBtn)
-                btnGroup.classList.add('p-2')
-                let row = this.generateRow()
-                // create div with column class
-                let col1 = this.generateColumn(['col-4', 'd-flex', 'flex-column', 'align-items-center'])
-                let col2 = this.generateColumn(['col-8', 'd-flex', 'flex-column', 'align-items-start', 'gap-2'])
-                let span = document.createElement('span')
-                span.style.fontSize = '10px'
-                span.style.fontStyle = 'italic'
-                span.classList.add('p-1')
-                span.innerText = 'Click on the photo to view different pespective'
+        let id = e.target.getAttribute('data-value')
+        this.fetchPerItem(document.getElementById('ctgry').innerText.toLowerCase(), id)
 
-                col1.appendChild(this.generateProduct(data))
-                col1.appendChild(span)
-                col1.appendChild(btnGroup)
+        // CONTAINER.innerHTML = ''
+        // let btn = document.createElement('button')
+        // btn.appendChild(document.createTextNode('Back'))
+        // btn.classList.add('btn')
+        // btn.classList.add('btn-primary')
+        // // back button
+        // btn.addEventListener('click', this.return)
+        // let addToCartBtn = document.createElement('button')
+        // addToCartBtn.classList.add('btn')
+        // addToCartBtn.classList.add('btn-outline-primary')
+        // addToCartBtn.setAttribute('data-value', e.getAttribute('data-value'))
+        // addToCartBtn.appendChild(document.createTextNode('Add to cart'))
+        // addToCartBtn.addEventListener('click', this.showConfirmationModal)
+        // let btnGroup = document.createElement('div')
+        // btnGroup.classList.add('btn-group')
+        // btnGroup.setAttribute('role', 'group')
+        // // append buttons to button group
+        // btnGroup.appendChild(btn)
+        // btnGroup.appendChild(addToCartBtn)
+        // btnGroup.classList.add('p-2')
+        // let row = this.generateRow()
+        // // create div with column class
+        // let col1 = this.generateColumn(['col-4', 'd-flex', 'flex-column', 'align-items-center'])
+        // let col2 = this.generateColumn(['col-8', 'd-flex', 'flex-column', 'align-items-start', 'gap-2'])
+        // let span = document.createElement('span')
+        // span.style.fontSize = '10px'
+        // span.style.fontStyle = 'italic'
+        // span.classList.add('p-1')
+        // span.innerText = 'Click on the photo to view different pespective'
 
-                col2.appendChild(this.generateProductDetails(data.name))
-                if (Object.keys(data).includes('price')) {
-                    col2.appendChild(this.generateProdPrice(data.price))
-                }
-                col2.appendChild(this.generateProdSpecification(data))
-                row.appendChild(col1)
-                row.appendChild(col2)
-                CONTAINER.appendChild(row)
-            })
-        })
+        // col1.appendChild(this.generateProduct(data))
+        // col1.appendChild(span)
+        // col1.appendChild(btnGroup)
+
+        // col2.appendChild(this.generateProductDetails(data.name))
+        // if (Object.keys(data).includes('price')) {
+        //     col2.appendChild(this.generateProdPrice(data.price))
+        // }
+        // col2.appendChild(this.generateProdSpecification(data))
+        // row.appendChild(col1)
+        // row.appendChild(col2)
+        // CONTAINER.appendChild(row)
+
     }
     showConfirmationModal = (e) => {
         let countDiv = document.createElement('div')
@@ -260,7 +263,8 @@ class Products {
         h5.innerText = data.name
         let btn = document.createElement('button')
         btn.appendChild(document.createTextNode('View'))
-        btn.setAttribute('data-value', `${JSON.stringify(data)}`)
+        btn.setAttribute('data-value', data.key)
+        btn.addEventListener('click', this.loadProducts)
         let btnClasses = ['btn', 'btn-primary']
         for (let b = 0; b < btnClasses.length; b++) {
             btn.classList.add(btnClasses[b])
