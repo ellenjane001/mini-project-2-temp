@@ -28,6 +28,7 @@ class Products {
         this.cls()
         document.querySelector('.page-loading-status').style.display = 'block'
         this.fetchSwitch(e.target.innerText.toLowerCase())
+        document.querySelector('.page-loading-status').style.display = 'none'
     }
     // load products per category - upon clicking the nav body
     loadProduct = (e) => {
@@ -61,64 +62,53 @@ class Products {
     }
     fetchPerItem = async (ctrgy, obj) => {
         let response = await App.GET(`${ctrgy}/${obj}.json`)
-        console.log(response)
+        return response
     }
-    loadProducts = (e) => {
+    loadProducts = async (e) => {
         // view product btn
         document.querySelector('.page-loading-status').style.display = 'none'
         let id = e.target.getAttribute('data-value')
-        this.fetchPerItem(document.getElementById('ctgry').innerText.toLowerCase(), id)
+        let data = await this.fetchPerItem(document.getElementById('ctgry').innerText.toLowerCase(), id)
 
-        // CONTAINER.innerHTML = ''
-        // let btn = document.createElement('button')
-        // btn.appendChild(document.createTextNode('Back'))
-        // btn.classList.add('btn')
-        // btn.classList.add('btn-primary')
-        // // back button
-        // btn.addEventListener('click', this.return)
-        // let addToCartBtn = document.createElement('button')
-        // addToCartBtn.classList.add('btn')
-        // addToCartBtn.classList.add('btn-outline-primary')
-        // addToCartBtn.setAttribute('data-value', e.getAttribute('data-value'))
-        // addToCartBtn.appendChild(document.createTextNode('Add to cart'))
-        // addToCartBtn.addEventListener('click', this.showConfirmationModal)
-        // let btnGroup = document.createElement('div')
-        // btnGroup.classList.add('btn-group')
-        // btnGroup.setAttribute('role', 'group')
-        // // append buttons to button group
-        // btnGroup.appendChild(btn)
-        // btnGroup.appendChild(addToCartBtn)
-        // btnGroup.classList.add('p-2')
-        // let row = this.generateRow()
-        // // create div with column class
-        // let col1 = this.generateColumn(['col-4', 'd-flex', 'flex-column', 'align-items-center'])
-        // let col2 = this.generateColumn(['col-8', 'd-flex', 'flex-column', 'align-items-start', 'gap-2'])
-        // let span = document.createElement('span')
-        // span.style.fontSize = '10px'
-        // span.style.fontStyle = 'italic'
-        // span.classList.add('p-1')
-        // span.innerText = 'Click on the photo to view different pespective'
-
-        // col1.appendChild(this.generateProduct(data))
-        // col1.appendChild(span)
-        // col1.appendChild(btnGroup)
-
-        // col2.appendChild(this.generateProductDetails(data.name))
-        // if (Object.keys(data).includes('price')) {
-        //     col2.appendChild(this.generateProdPrice(data.price))
-        // }
-        // col2.appendChild(this.generateProdSpecification(data))
-        // row.appendChild(col1)
-        // row.appendChild(col2)
-        // CONTAINER.appendChild(row)
+        CONTAINER.innerHTML = ''
+        let btn = document.createElement('button')
+        btn.appendChild(document.createTextNode('Back'))
+        btn.classList.add('btn', 'btn-primary')
+        // back button
+        btn.addEventListener('click', this.return)
+        let addToCartBtn = document.createElement('button')
+        addToCartBtn.classList.add('btn', 'btn-outline-primary')
+        addToCartBtn.setAttribute('data-value', JSON.stringify(data))
+        addToCartBtn.appendChild(document.createTextNode('Add to cart'))
+        addToCartBtn.addEventListener('click', this.showConfirmationModal)
+        let btnGroup = document.createElement('div')
+        btnGroup.classList.add('btn-group')
+        btnGroup.setAttribute('role', 'group')
+        // append buttons to button group
+        this.appendElements(btnGroup, [btn, addToCartBtn])
+        btnGroup.classList.add('p-2')
+        let row = this.generateRow()
+        // create div with column class
+        let col1 = this.generateColumn(['col-4', 'd-flex', 'flex-column', 'align-items-center'])
+        let col2 = this.generateColumn(['col-8', 'd-flex', 'flex-column', 'align-items-start', 'gap-2'])
+        let span = document.createElement('span')
+        span.style.fontSize = '10px'
+        span.style.fontStyle = 'italic'
+        span.classList.add('p-1')
+        span.innerText = 'Click on the photo to view different pespective'
+        this.appendElements(col1, [this.generateProduct(data), span, btnGroup])
+        col2.appendChild(this.generateProductDetails(data.name))
+        if (Object.keys(data).includes('price')) {
+            col2.appendChild(this.generateProdPrice(data.price))
+        }
+        col2.appendChild(this.generateProdSpecification(data))
+        this.appendElements(row, [col1, col2])
+        CONTAINER.appendChild(row)
 
     }
     showConfirmationModal = (e) => {
         let countDiv = document.createElement('div')
-        countDiv.classList.add('d-flex')
-        countDiv.classList.add('gap-2')
-        countDiv.classList.add('align-items-center')
-        countDiv.classList.add('justify-content-center')
+        countDiv.classList.add('d-flex', 'gap-2', 'align-items-center', 'justify-content-center')
         let countLbl = document.createElement('label')
         countLbl.innerText = 'No. of items'
         let count = document.createElement('input')
@@ -127,15 +117,13 @@ class Products {
         count.value = 1
         count.onfocus = (e) => e.target.value = ''
         count.classList.add('form-control-sm')
-        countDiv.appendChild(countLbl)
-        countDiv.appendChild(count)
+        this.appendElements(countDiv, [countLbl, count])
         document.getElementById('add-to-cart').setAttribute('data-value', e.target.getAttribute('data-value'))
 
         if (document.querySelector('#myModal .modal-body').children.length == 1) {
             document.querySelector('#myModal .modal-body').children[0].remove()
         }
         document.querySelector('#myModal .modal-body').appendChild(countDiv)
-
         myModal.show()
         this.addtoCart()
     }
@@ -150,15 +138,9 @@ class Products {
     }
 
     generateProdPrice = (data) => {
-
         let span = document.createElement('span')
         span.innerText = `Price: $${data} `
-        span.classList.add('h5')
-        span.classList.add('text-bg-dark')
-        span.classList.add('p-2')
-        span.classList.add('border')
-        span.classList.add('rounded-start')
-
+        span.classList.add('h5', 'text-bg-dark', 'p-2', 'border', 'rounded-start')
         return span
     }
     generateProdSpecification = (data) => {
@@ -182,8 +164,7 @@ class Products {
                 let td = document.createElement('td')
                 td.innerText = spec
                 td2.innerText = data.specs[spec]
-                trBody.appendChild(td)
-                trBody.appendChild(td2)
+                this.appendElements(trBody, [td, td2])
                 tbody.appendChild(trBody)
             }
         } else {
@@ -194,26 +175,22 @@ class Products {
             trBody.appendChild(td)
             tbody.appendChild(trBody)
         }
-
-        tr.appendChild(th)
-        tr.appendChild(th2)
+        this.appendElements(tr, [th, th2])
         thead.appendChild(tr)
-        table.appendChild(thead)
-        table.appendChild(tbody)
+        this.appendElements(table, [thead, tbody])
         div.appendChild(table)
         return div
 
     }
 
     generateProduct = (data) => {
+        console.log(data)
         let row = this.generateRow()
         // append image based on length
         let img = document.createElement('img')
         img.src = data.image_link[0]
         let count = 0
         img.addEventListener('click', () => {
-            console.log(count)
-            console.log(data.image_link[count++])
             if (count < data.image_link.length)
                 img.src = data.image_link[count]
             else
@@ -221,8 +198,7 @@ class Products {
         })
         img.style.height = 'fit-content'
         img.style.width = '400px'
-        img.classList.add('border')
-        img.classList.add('rounded')
+        img.classList.add('border', 'rounded')
         // append image to row
         row.appendChild(img)
         return row
@@ -234,11 +210,9 @@ class Products {
     }
     generateColumn = (classes) => {
         let col = document.createElement('div')
-
         for (let i = 0; i < classes.length; i++) {
             col.classList.add(classes[i])
         }
-
         return col
     }
 
@@ -249,12 +223,9 @@ class Products {
             column.classList.add(columnClasses[a])
         }
         let div = document.createElement('div')
-        div.classList.add('card')
-        div.classList.add('border')
-        div.classList.add('h-100')
+        div.classList.add('card', 'border', 'h-100')
         let image = document.createElement('img')
-        image.classList.add('card-img-top')
-        image.classList.add('img')
+        image.classList.add('card-img-top', 'img')
         image.src = data.image_link[0]
         let body = document.createElement('div')
         body.classList.add('card-body')
@@ -269,10 +240,8 @@ class Products {
         for (let b = 0; b < btnClasses.length; b++) {
             btn.classList.add(btnClasses[b])
         }
-        body.appendChild(h5)
-        body.appendChild(btn)
-        div.appendChild(image)
-        div.appendChild(body)
+        this.appendElements(body, [h5, btn])
+        this.appendElements(div, [image, body])
         column.appendChild(div)
         return column
     }
@@ -284,6 +253,20 @@ class Products {
     }
     cls = () => {
         CONTAINER.innerHTML = ''
+    }
+    createElementWithClass = (element, classes = []) => {
+        let el = document.createElement(element)
+        if (classes.length > 0) {
+            for (let c in classes) {
+                el.classList.add(classes[c])
+            }
+        }
+        return el
+    }
+    appendElements = (element, appends) => {
+        for (a in appends) {
+            element.appendChild(appends[a])
+        }
     }
 }
 let prod = new Products()
