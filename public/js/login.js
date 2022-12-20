@@ -16,37 +16,43 @@ class Login {
         forms.username.style.border = '1px solid #ced4da'
         forms.password.style.border = '1px solid #ced4da'
     }
+    login = async (credentials) => {
+        let res = this.getUsers(credentials)
+    }
 
     getUsers = async (credentials) => {
         const { username, password } = credentials
-        let login = false
-        await App.GET('user.json', {}).then(res => res.json()).then(response => {
-            Object.keys(response).forEach(function (key) {
-                if (response[key].username == username && response[key].password == password) {
-                    console.log('success')
-                    login = true
-                }
-            });
+        let res = await App.GET(`user.json?orderBy="username"&equalTo="${username}"`)
+        let json = await res.json()
+        return await json
+        // let login = false
+        // await App.GET('user.json', {}).then(res => res.json()).then(response => {
+        //     Object.keys(response).forEach(function (key) {
+        //         if (response[key].username == username && response[key].password == password) {
+        //             console.log('success')
+        //             login = true
+        //         }
+        //     });
 
-            if (login == true) {
-                document.querySelector('button[type="submit"]').classList.add("disabled")
-                localStorage.setItem('login', true)
-                const toast = new bootstrap.Toast(toastLogin)
-                toast.show()
-                setTimeout(() => {
-                    location.href = '../index.html'
-                }, 3000)
-            }
-            else {
-                alert('failed')
-                forms.username.style.border = "1px solid red"
-                forms.password.style.border = "1px solid red"
-                forms.username.value = ''
-                forms.password.value = ''
-            }
+        //     if (login == true) {
+        //         document.querySelector('button[type="submit"]').classList.add("disabled")
+        //         localStorage.setItem('login', true)
+        //         const toast = new bootstrap.Toast(toastLogin)
+        //         toast.show()
+        //         setTimeout(() => {
+        //             location.href = '../index.html'
+        //         }, 3000)
+        //     }
+        //     else {
+        //         alert('failed')
+        //         forms.username.style.border = "1px solid red"
+        //         forms.password.style.border = "1px solid red"
+        //         forms.username.value = ''
+        //         forms.password.value = ''
+        //     }
 
 
-        })
+        // })
     }
 }
 
@@ -60,7 +66,7 @@ document.getElementById('login-form').onsubmit = (e) => {
 
 
     if (credentials.username !== '' && credentials.password !== '')
-        new Login().getUsers(credentials)
+        new Login().login(credentials)
     else {
         if (credentials.username === '' && credentials.password === '') {
             forms.username.style.border = "1px solid red"
