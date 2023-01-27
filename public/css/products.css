@@ -189,6 +189,11 @@ section {
 }
 
 .btn-add-to-cart:hover {
-
     background-color: #1158a8;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

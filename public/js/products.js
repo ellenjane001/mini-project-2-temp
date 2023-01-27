@@ -29,12 +29,12 @@ class Products {
         document.querySelector('.page-loading-status').style.display = 'block'
         this.fetchSwitch(e.target.innerText.toLowerCase())
         document.querySelector('.page-loading-status').style.display = 'none'
-        e.target.classList.add('active')
+        this.activeNav(e.target.innerText)
     }
     // load products per category - upon clicking the nav body
     loadProduct = (e) => {
         let category = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.firstChild.firstChild.innerText.toLowerCase()
-        // get H1 element to apped the category name
+        // get H1 element to append the category name
         let label = document.getElementById('ctgry')
         this.cls()
         this.fetchSwitch(category)
@@ -70,7 +70,6 @@ class Products {
         document.querySelector('.page-loading-status').style.display = 'none'
         let id = e.target.getAttribute('data-value')
         let data = await this.fetchPerItem(document.getElementById('ctgry').innerText.toLowerCase(), id)
-
         CONTAINER.innerHTML = ''
         let btn = this.createElementWithClass('button', ['btn', 'btn-primary'])
         btn.appendChild(document.createTextNode('Back'))
@@ -105,7 +104,6 @@ class Products {
         row.appendChild(col1)
         row.appendChild(col2)
         CONTAINER.appendChild(row)
-
     }
     showConfirmationModal = (e) => {
         let countDiv = this.createElementWithClass('div', ['d-flex', 'gap-2', 'align-items-center', 'justify-content-center'])
@@ -178,7 +176,6 @@ class Products {
         table.appendChild(tbody)
         div.appendChild(table)
         return div
-
     }
 
     generateProduct = (data) => {
@@ -187,9 +184,12 @@ class Products {
         let img = this.createElementWithClass('img', ['border', 'rounded'])
         img.src = data.image_link[0]
         let count = 0
+        let span = this.createElementWithClass('span',['text-center','fst-italic','text-muted','pt-2'])
         img.addEventListener('click', () => {
-            if (count < data.image_link.length)
-                img.src = data.image_link[count]
+            if (count < data.image_link.length) {
+                img.src = data.image_link[count++]
+                span.innerText = `Photo #${count} out of ${data.image_link.length}`
+            }
             else
                 count = 0
         })
@@ -197,6 +197,7 @@ class Products {
         img.style.width = '400px'
         // append image to row
         row.appendChild(img)
+        row.appendChild(span)
         return row
     }
     generateRow = () => {
@@ -211,7 +212,6 @@ class Products {
         }
         return col
     }
-
     generateCard = (data) => {
         let column = this.createElementWithClass('div', ['col', 'm-2'])
         let div = this.createElementWithClass('div', ['card', 'border', 'h-100'])
@@ -248,6 +248,14 @@ class Products {
         }
         return el
     }
+    activeNav = (text) => {
+        document.querySelectorAll('ul.nav.nav-pills.nav-fill .nav-link').forEach(a => {
+            if (a.innerText === text)
+                a.classList.add('active')
+            else
+                a.classList.remove('active')
+        })
+    }
 }
 let prod = new Products()
 // categories object
@@ -268,3 +276,4 @@ for (let i = 0; i < categories.length; i++) {
 }
 prod.fetchPerCategory('case')
 document.getElementById('ctgry').innerText = 'case'.toUpperCase()
+prod.activeNav('CASE')
